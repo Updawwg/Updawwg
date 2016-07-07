@@ -1,6 +1,9 @@
 package com.theironyard.controllers;
 
 import com.theironyard.entities.User;
+import com.theironyard.services.DogRepository;
+import com.theironyard.services.PostRepository;
+import com.theironyard.services.UserRepository;
 import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,10 +18,14 @@ import java.sql.SQLException;
  */
 @RestController
 public class UpdawwgRestController {
+    @Autowired
+    DogRepository dogs;
 
-//    @Autowired
-//
-//    @Autowired
+    @Autowired
+    UserRepository users;
+
+    @Autowired
+    PostRepository posts;
 
     @PostConstruct
     public void init() throws SQLException {
