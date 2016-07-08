@@ -24,6 +24,27 @@ module.exports = function(app) {
 }
 
 },{}],2:[function(require,module,exports){
+/*******************************
+* Nav Controller
+*
+********************************/
+
+module.exports = function(app) {
+
+  app.controller('NavController', ['$scope', function($scope){
+
+    /*******************************
+    * menu collapse
+    ********************************/
+
+
+    $scope.isCollapsed = false;
+
+
+  }])
+}
+
+},{}],3:[function(require,module,exports){
 'use strict';
 
 /*******************************
@@ -33,7 +54,7 @@ module.exports = function(app) {
 
 (function () {
 
-  var app = angular.module('UpDawwgApp', ['ngRoute']);
+  var app = angular.module('UpDawwgApp', ['ngRoute', 'ngAnimate']);
 
   //router
   app.config(['$routeProvider', function ($routeProvider) {
@@ -56,12 +77,13 @@ module.exports = function(app) {
 
   // Controllers
   require('./controllers/feed-controller')(app);
+  require('./controllers/nav-controller')(app);
 
   // Filters
 
   // Directives
 })();
-},{"./controllers/feed-controller":1,"./services/dog-service":3}],3:[function(require,module,exports){
+},{"./controllers/feed-controller":1,"./controllers/nav-controller":2,"./services/dog-service":4}],4:[function(require,module,exports){
 /*******************************
 * Dog Service
 *
@@ -108,4 +130,4 @@ module.exports = function(app) {
 
 }
 
-},{}]},{},[2])
+},{}]},{},[3])

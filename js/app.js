@@ -5,7 +5,7 @@
 
 (function() {
 
-let app = angular.module('UpDawwgApp', ['ngRoute']);
+let app = angular.module('UpDawwgApp', ['ngRoute','ngAnimate']);
 
 
 //router
@@ -37,6 +37,8 @@ require('./services/dog-service')(app);
 
 // Controllers
 require('./controllers/feed-controller')(app);
+require('./controllers/nav-controller')(app);
+
 
 
 
