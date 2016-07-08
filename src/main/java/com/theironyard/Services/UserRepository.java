@@ -11,6 +11,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface UserRepository extends CrudRepository<User, Integer> {
 
 
-    @Query("SELECT r from Dog r WHERE r. LIKE ?1%")
-    public Iterable<Dog> searchLocation(String location);
+//    @Query("SELECT r from Dog r WHERE r. LIKE ?1%")
+//    public Iterable<Dog> searchLocation(String location);
 }
