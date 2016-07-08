@@ -40,6 +40,14 @@ module.exports = function(app) {
 
       } //********************************//
 
-  })
+  })//end DogService**********************//
+
+  app.factory('DawgInService',function($http){
+
+    let pawthentication = {
+      name: '',
+      password:'',
+    }
+  });
 
 }
