@@ -18,15 +18,16 @@
 
         <!-- NAV -->
         <aside class="side-nav" ng-controller="NavController">
-          <img src="" alt="LOGO" />
+          <img class="rope" src="./assets/hanginthere.png" alt="LOGO" />
           <h4>UpDawwg</h4>
           <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" ng-click="isCollapsed = !isCollapsed"></span>
 
           <ul id="nav-list" class="cssSlideUp" ng-show="isCollapsed">
-            <li>add dog</li>
-            <li>about</li>
-            <li>feed</li>
-            <li>heatmap</li>
+            <li><a href="#/add-dog-form">add dog</a></li>
+            <li><a href="#/about">about</a></li>
+            <li><a href="#/feed">feed</a></li>
+            <li><a href="#/heatmap">heatmap</a></li>
+            <li><a href="#/logout">log out</a></li>
           </ul>
 
         </aside>

@@ -148,9 +148,10 @@ div {
 * .SCSS
 ********************************/
 .side-nav {
+  min-width: 120px;
   max-width: 200px;
   background: #9C9A99;
-  height: 100vh;
+  min-height: 100vh;
   display: inline-flex;
   flex-direction: column;
   border-right: 2px dashed black;
@@ -164,9 +165,15 @@ div {
     padding-bottom: 10px; }
     .side-nav span:hover {
       text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); }
+  .side-nav .rope {
+    height: 120px;
+    width: 40px;
+    margin-top: 10px;
+    margin-left: 30px; }
   .side-nav h4 {
     display: inline-block; }
   .side-nav ul {
+    font-size: 1.3em;
     overflow: hidden;
     list-style: none;
     margin-top: 10px;
