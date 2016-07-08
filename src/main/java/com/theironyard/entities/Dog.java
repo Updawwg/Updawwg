@@ -28,16 +28,20 @@ public class Dog {
     @Column(nullable =false)
     String description;
 
+    @Column(nullable =false)
+    Boolean favorite;
+
 
     public Dog() {
     }
 
-    public Dog(String name, String image, String breed, int age, String description) {
+    public Dog(String name, String image, String breed, int age, String description, Boolean favorite) {
         this.name = name;
         this.image = image;
         this.breed = breed;
         this.age = age;
         this.description = description;
+        this.favorite = favorite;
     }
 
     public int getId() {
@@ -86,5 +90,13 @@ public class Dog {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Boolean getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Boolean favorite) {
+        this.favorite = favorite;
     }
 }
