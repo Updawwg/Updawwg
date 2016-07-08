@@ -1,11 +1,17 @@
 <!-- ng-controller="FeedController" -->
 
 <section >
-    <span>amazing dog</span>
-    <video id="videoGfy0" autoplay="autoplay" muted="" loop="" ng-attr-poster="//thumbs.gfycat.com/{{ feeds.videoPageGfyFrame.gfyName }}-poster.jpg" poster="//thumbs.gfycat.com/MemorableYellowishDungbeetle-poster.jpg">
-                    <source data-ng-src="https://zippy.gfycat.com/MemorableYellowishDungbeetle.webm" type="video/webm" src="https://zippy.gfycat.com/MemorableYellowishDungbeetle.webm">
-                    <source data-ng-src="https://fat.gfycat.com/MemorableYellowishDungbeetle.mp4" type="video/mp4" src="https://fat.gfycat.com/MemorableYellowishDungbeetle.mp4">
-                </video>
+
+      <video id="videoGfy0" autoplay="autoplay" muted="" loop="" ng-attr-poster="//thumbs.gfycat.com/{{ feeds.videoPageGfyFrame.gfyName }}-poster.jpg" poster="//thumbs.gfycat.com/MemorableYellowishDungbeetle-poster.jpg">
+        <source data-ng-src="https://zippy.gfycat.com/MemorableYellowishDungbeetle.webm" type="video/webm" src="https://zippy.gfycat.com/MemorableYellowishDungbeetle.webm">
+        <source data-ng-src="https://fat.gfycat.com/MemorableYellowishDungbeetle.mp4" type="video/mp4" src="https://fat.gfycat.com/MemorableYellowishDungbeetle.mp4">
+      </video>
+
+      <video autoplay="" loop="" class="video above ng-scope" muted="" ng-attr-poster="{{imageUrl}}" itemscope="" itemtype="http://schema.org/VideoObject" poster="https://thumbs.gfycat.com/WellinformedSomberArthropods-poster.jpg">
+          <source data-ng-src="https://thumbs.gfycat.com/WellinformedSomberArthropods-mobile.mp4" type="video/mp4" src="https://thumbs.gfycat.com/WellinformedSomberArthropods-mobile.mp4">
+          <source data-ng-src="https://zippy.gfycat.com/WellinformedSomberArthropods.mp4" type="video/mp4" src="https://zippy.gfycat.com/WellinformedSomberArthropods.mp4">
+          <source data-ng-src="https://fat.gfycat.com/WellinformedSomberArthropods.webm" type="video/webm" src="https://fat.gfycat.com/WellinformedSomberArthropods.webm">
+      </video>
 
     <div class="dog" ng-click="deets()" ng-repeat="dog in dawgz">
         <img src="" alt="" />
