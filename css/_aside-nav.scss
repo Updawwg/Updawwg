@@ -4,6 +4,7 @@
 ********************************/
 
 .side-nav {
+  z-index: 9999;
   min-width: 120px;
   max-width: 200px;
   background: #9C9A99;
@@ -13,6 +14,7 @@
   border-right: 2px dashed black;
   padding: 10px;
   margin-right: 10px;
+  box-shadow: 2px 0 10px 2px rgba(0,0,0,0.3);
   span {
     font-size: 2em;
     text-align: center;
@@ -25,20 +27,51 @@
   }
   .rope {
     //logo
+    box-sizing: border-box;
     height: 120px;
     width: 40px;
     margin-top:  10px;
     margin-left: 30px;
+    padding-bottom: 10px;
+    transition: 1s ease all;
+    animation: bobble ease-in-out 3s infinite;
   }
   h4 {
     display: inline-block;
+    box-shadow: 0 -8px 4px -15px rgba(0,0,0,0.2);
+    animation: bobbleShadow ease-in-out 3s infinite;
+    text-align: center;
   }
   ul {
+    color: white;
     font-size: 1.3em;
     overflow: hidden;
-    list-style: none;
     margin-top: 10px;
-    padding-left: 10px;
+    padding-left: 0px;
     padding-right: 10px;
+  }
 }
+
+@keyframes bobble {
+  0% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100%{
+    transform: translateY(5px);
+  }
+}
+
+@keyframes bobbleShadow {
+  0% {
+    box-shadow: 0 -18px 8px -6px rgba(0,0,0,0.2);
+  }
+  50% {
+    box-shadow: 0 -18px 8px -9px rgba(0,0,0,0.2);
+  }
+  100%{
+    box-shadow: 0 -18px 8px -6px rgba(0,0,0,0.2);
+  }
 }
