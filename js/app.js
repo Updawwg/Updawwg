@@ -5,15 +5,15 @@
 
 (function() {
 
-let app = angular.module('UpDawwgApp', ['ngRoute']);
+let app = angular.module('UpDawwgApp', ['ngRoute','ngAnimate']);
 
 
 //router
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider
-    .when('/login', {
-      templateUrl: '',
-      conroller: '',
+    .when('/', {
+      templateUrl: 'dogIn.html',
+      conroller: 'DawgInController',
     })
 
     .when('/feed', {
@@ -24,6 +24,20 @@ app.config(['$routeProvider', function($routeProvider) {
     .when('/details', {
       templateUrl: '',
       controller: '',
+    })
+
+    .when('/add-dog-form', {
+      templateUrl: 'add-dog-form.html',
+      controller: 'AddDogFormController',
+    })
+
+    .when('/logout', {
+      templateUrl: 'dogIn.html',
+      controller: 'DawgInController',
+    })
+
+    .when('/about', {
+      templateUrl: 'about.html',
     })
 
     .otherwise({
@@ -37,6 +51,10 @@ require('./services/dog-service')(app);
 
 // Controllers
 require('./controllers/feed-controller')(app);
+require('./controllers/nav-controller')(app);
+require('./controllers/dawgIn-controller')(app);
+require('./controllers/add-dog-form-controller');(app);
+
 
 
 
