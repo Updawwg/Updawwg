@@ -1,0 +1,24 @@
+/*******************************
+* _ASIDE NAV
+* .SCSS
+********************************/
+
+.side-nav {
+  max-width: 200px;
+  background: #9C9A99;
+  height: 100vh;
+  display: inline-flex;
+  flex-direction: column;
+  border-right: 2px dashed black;
+  padding: 10px;
+  margin-right: 10px;
+  img {
+  }
+  h4 {
+    display: inline-block;
+  }
+  ul {
+    list-style: none;
+    padding: 10px;
+  }
+}
