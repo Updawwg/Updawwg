@@ -1,8 +1,32 @@
+body {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  background: #766862; }
+
+.main-container {
+  padding-top: 10px; }
+
+footer {
+  width: 100%;
+  bottom: 0px;
+  position: fixed; }
+  footer h6 {
+    text-align: center; }
+
 div {
   width: 400px;
   height: 300px;
   background: #eee;
   margin: 0 auto; }
+
+@keyframes pant {
+  0% {
+    top: 175px; }
+  50% {
+    top: 180px; }
+  100% {
+    top: 175px; } }
 
 .pindog {
   margin: 0 auto;
@@ -60,7 +84,8 @@ div {
       position: absolute;
       top: -27px;
       left: -42px;
-      background: transparent; }
+      background: transparent;
+      z-index: 1; }
     .pindog b :after {
       display: block;
       content: "";
@@ -73,21 +98,17 @@ div {
       position: absolute;
       top: -27px;
       left: -5px;
-      background: transparent; }
+      background: transparent;
+      z-index: 1; }
   .pindog .tounge {
     width: 30px;
     height: 30px;
     position: relative;
     top: 180px;
     background-color: red;
-    border-radius: 50px/100px; }
-  .pindog .tounge {
-    width: 30px;
-    height: 30px;
-    position: relative;
-    top: 180px;
-    background-color: red;
-    border-radius: 50px/100px; }
+    border-radius: 50px/100px;
+    transition: all 300ms ease;
+    animation: pant 1s ease-in-out infinite; }
   .pindog h1 span {
     font: 26px Monaco, MonoSpace;
     height: 200px;
@@ -121,3 +142,31 @@ div {
     height: auto;
     position: absolute;
     left: 43%; }
+
+/*******************************
+* _ASIDE NAV
+* .SCSS
+********************************/
+.side-nav {
+  max-width: 200px;
+  background: #9C9A99;
+  height: 100vh;
+  display: inline-flex;
+  flex-direction: column;
+  border-right: 2px dashed black;
+  padding: 10px;
+  margin-right: 10px; }
+  .side-nav h4 {
+    display: inline-block; }
+  .side-nav ul {
+    list-style: none;
+    padding: 10px; }
+
+/*******************************
+* _FEED
+* .SCSS
+********************************/
+video {
+  width: 100px;
+  background: black;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3); }

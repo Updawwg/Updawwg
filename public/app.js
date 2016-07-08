@@ -4,7 +4,7 @@
 *
 ********************************/
 
-module.export = function(app) {
+module.exports = function(app) {
 
   app.controller('FeedController', ['$scope', 'DogService', function($scope, DogService){
 
@@ -13,6 +13,12 @@ module.export = function(app) {
     ********************************/
     $scope.dawgz = DogService.getDawgz();
 
+
+    $scope.deets = function () {
+      //1. grab dog details
+      //2. redirect to detail view
+
+    }
 
   }])
 }
@@ -98,7 +104,15 @@ module.exports = function(app) {
 
       } //********************************//
 
-  })
+  })//end DogService**********************//
+
+  app.factory('DawgInService',function($http){
+
+    let pawthentication = {
+      name: '',
+      password:'',
+    }
+  });
 
 }
 
