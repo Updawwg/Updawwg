@@ -55,8 +55,8 @@ public class UpdawwgRestController {
     }
 
     @RequestMapping(path = "/dogs", method = RequestMethod.POST)
-    public void dog(String name, String image, String breed, int age, String description) {
-        Dog dog = new Dog(name, image, breed, age, description);
+    public void dog(String name, String image, String breed, int age, String description, Boolean favorite) {
+        Dog dog = new Dog(name, image, breed, age, description, favorite);
         dogs.save(dog);
     }
 
