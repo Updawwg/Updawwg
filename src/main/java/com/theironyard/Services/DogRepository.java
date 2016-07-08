@@ -1,4 +1,4 @@
-package com.theironyard.Services;
+package com.theironyard.services;
 
 import com.theironyard.entities.Dog;
 import org.springframework.data.repository.CrudRepository;
