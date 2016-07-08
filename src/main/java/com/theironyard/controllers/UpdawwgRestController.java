@@ -6,13 +6,16 @@ import com.theironyard.entities.User;
 import com.theironyard.services.DogRepository;
 import com.theironyard.services.PostRepository;
 import com.theironyard.services.UserRepository;
+import com.theironyard.utils.PasswordStorage;
 import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 
 /**
@@ -42,10 +45,19 @@ public class UpdawwgRestController {
         return users.findAll();
     }
 
+    // make login happen in here
     @RequestMapping(path = "/users", method = RequestMethod.POST)
-    public void user(String name, String password) {
-        User user = new User(name, password);
-        users.save(user);
+    public void user(User user, HttpSession session) throws Exception {
+        User userFromDB = users.findFirstByName(user.getName());
+        if (userFromDB == null) {
+            user.setPassword(PasswordStorage.createHash(user.getPassword()));
+            users.save(user);
+        }
+        else if (!PasswordStorage.verifyPassword(user.getPassword(), userFromDB.getPassword())) {
+            throw new Exception("Wrong password!");
+        }
+
+        session.setAttribute("username", user.getName());
     }
 
     // routes for dogs
@@ -55,8 +67,8 @@ public class UpdawwgRestController {
     }
 
     @RequestMapping(path = "/dogs", method = RequestMethod.POST)
-    public void dog(String name, String image, String breed, int age, String description) {
-        Dog dog = new Dog(name, image, breed, age, description);
+    public void dog(String name, String image, String breed, int age, String description, Boolean favorite) {
+        Dog dog = new Dog(name, image, breed, age, description, favorite);
         dogs.save(dog);
     }
 
@@ -72,11 +84,5 @@ public class UpdawwgRestController {
         User user = users.findOne(userId);
         Post post = new Post(replyId, message, user, dog);
         posts.save(post);
-
     }
-
-
-
-
-
 }
