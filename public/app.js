@@ -6,12 +6,12 @@
 
 module.exports = function(app) {
 
-  app.controller('AddDogFormController', ['$scope', 'DogService', function($scope, DogService){
+  app.controller('AddDogFormController', ['$scope', 'DogService', function( $scope, DogService ){
 
-
-      $scope.submitDog = function() {
-        console.log(this);
-      };
+      //
+      // $scope.submitDog = function() {
+      //   console.log(this);
+      // };
 
   }])
 }
@@ -108,7 +108,8 @@ module.exports = function(app) {
       templateUrl: '',
       controller: ''
     }).when('/add-dog-form', {
-      templateUrl: 'add-dog-form.html'
+      templateUrl: 'add-dog-form.html',
+      controller: 'AddDogFormController'
     }).when('/logout', {
       templateUrl: 'dogIn.html',
       controller: 'DawgInController'
@@ -124,10 +125,10 @@ module.exports = function(app) {
   require('./services/pawthentication-service')(app);
 
   // Controllers
+  require('./controllers/add-dog-form-controller');app;
   require('./controllers/feed-controller')(app);
   require('./controllers/nav-controller')(app);
   require('./controllers/dawgIn-controller')(app);
-  require('./controllers/add-dog-form-controller');app;
 
   // Filters
 
