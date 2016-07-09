@@ -179,7 +179,7 @@ module.exports = function(app) {
 },{}],7:[function(require,module,exports){
 'use strict'
 module.exports = function(app) {
-    app.factory('PawthenticationService', ['$http', '$rootScope', '$cookies', function($http, $rootScope,$cookies) {
+    app.factory('PawthenticationService', ['$http', '$rootScope', '$cookies','$location', function($http, $rootScope,$cookies,$location) {
         let service = {};
         //Service functions*******************************
         service.LogIn = function(username, password, callback) {
@@ -189,7 +189,7 @@ module.exports = function(app) {
                 })
                 .success(function(response) {
                     callback(response);
-                });
+                }).then()
         }; //service.LogIn ends***********************
         service.SetCredentials = function(username, password) {
 
