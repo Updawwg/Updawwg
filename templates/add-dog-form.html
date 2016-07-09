@@ -3,43 +3,36 @@
 <h1>add dog form</h1>
 
 
-<form class="add-dog">
+<form class="add-dog" method="post" action="/dogs" enctype="multipart/form-data">
 
   <div class="input-group input-group-lg">
     <span class="input-group-addon" id="sizing-addon1">&#29356;</span>
-    <input type="text" class="form-control" placeholder="Dog Name" aria-describedby="sizing-addon1">
+    <input type="text" name='name' class="form-control" placeholder="Dog Name" aria-describedby="sizing-addon1">
   </div>
 
   <div class="input-group input-group-lg">
     <span class="input-group-addon" id="sizing-addon1">&#21205;&#30011;</span>
-    <input type="file" class="form-control" aria-describedby="sizing-addon1">
+    <input type="file" name='image' class="form-control" aria-describedby="sizing-addon1">
   </div>
 
   <div class="input-group input-group-lg">
     <span class="input-group-addon" id="sizing-addon1">&#23411;</span>
-    <input type="text" class="form-control" placeholder="Breed" aria-describedby="sizing-addon1">
+    <input type="text" name='breed' class="form-control" placeholder="Breed" aria-describedby="sizing-addon1">
   </div>
 
   <div class="input-group input-group-lg">
     <span class="input-group-addon" id="sizing-addon1">&#24180;</span>
-    <input type="text" class="form-control" placeholder="Age" aria-describedby="sizing-addon1">
+    <input type="text" name='age' class="form-control" placeholder="Age" aria-describedby="sizing-addon1">
   </div>
 
   <div class="input-group input-group-lg">
     <span class="input-group-addon" id="sizing-addon1">&#35352;&#36848;</span>
-    <textarea type="text" class="form-control desc" placeholder="Description" aria-describedby="sizing-addon1"></textarea>
+    <textarea type="text" name='description' class="form-control desc" placeholder="Description" aria-describedby="sizing-addon1"></textarea>
   </div>
-
-    <div class="input-group">
-      <span class="input-group-addon">
-        <input type="checkbox" aria-label="...">
-      </span>
-      <input type="text" class="form-control" aria-label="..." readonly="true" value="Favorite">
-    </div>
 
     <div class="input-group input-group-lg">
       <span class="input-group-addon" id="sizing-addon1"></span>
-      <button type="submit" class="btn btn-default form-control" aria-describedby="sizing-addon1">Submit</button>
+      <input type="submit" class="btn btn-default form-control" aria-describedby="sizing-addon1">
     </div>
 
 

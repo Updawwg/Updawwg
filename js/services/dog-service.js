@@ -5,7 +5,7 @@
 
 module.exports = function(app) {
 
-  app.factory('DogService', function($http) {
+  app.factory('DogService', ['$http', function($http) {
 
       let dawgz = [];
 
@@ -33,13 +33,17 @@ module.exports = function(app) {
 
         },
 
-        setDog() {
-
+        setDog(data) {
+          $http({
+            url: '/dogs',
+            method: 'POST',
+            data: data,
+          })
 
         },
 
       } //********************************//
 
-  })//end DogService**********************//
+  }])//end DogService**********************//
 
 }
