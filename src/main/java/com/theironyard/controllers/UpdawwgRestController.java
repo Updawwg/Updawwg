@@ -97,7 +97,7 @@ public class UpdawwgRestController {
     }
 
     @RequestMapping(path = "/dogs", method = RequestMethod.POST)
-    public void dog(HttpSession session,String name, String breed, int age, String description, int rating, MultipartFile photo) throws Exception {
+    public void dog(HttpSession session,String name, String breed, int age, String description, MultipartFile photo) throws Exception {
         String username = (String) session.getAttribute("username");
         if (username == null) {
             throw new Exception("Not logged in!");
@@ -111,7 +111,7 @@ public class UpdawwgRestController {
         FileOutputStream fos = new FileOutputStream(photoFile);
         fos.write(photo.getBytes());
 
-        Dog dog = new Dog(name, photoFile.getName(), breed, age, description, rating, user);
+        Dog dog = new Dog(name, photoFile.getName(), breed, age, description, 0, user);
 
 
         dogs.save(dog);
