@@ -1,20 +1,15 @@
+
+
 <h1>add dog form</h1>
-<input type="text" name="name" placeholder="name" value="">
-<input type="text" name="name" placeholder="breed" value="">
-<input type="text" name="name" placeholder="age" value="">
-<input type="text" name="name" placeholder="nickname" value="">
-<input type="text" name="name" placeholder="fur color" value="">
-<input type="text" name="name" placeholder="favorite food" value="">
-<input type="text" name="name" placeholder="favorite sport" value="">
-<input type="text" name="name" placeholder="smelly? (y/n)" value="">
-<input type="text" name="name" placeholder="eye color" value="">
-<input type="text" name="name" placeholder="superpower" value="">
-<input type="text" name="name" placeholder="phone number" value="">
-<input type="text" name="name" placeholder="gender" value="">
-<input type="text" name="name" placeholder="linkedin page (url)" value="">
-<input type="text" name="name" placeholder="frisbee or tennisball" value="">
-<input type="text" name="name" placeholder="single? (y/n)" value="">
-<input type="text" name="name" placeholder="political party" value="">
-<input type="text" name="name" placeholder="height (cm)" value="">
-<input type="text" name="name" placeholder="weight (kg)" value="">
-<button type="button" name="button">Submit</button>
+
+<form method="post" action="/dogs" enctype="multipart/form-data">
+
+  <input type="text" name="name" placeholder="name" value="">
+  <input type="file" placeholder="image" value="">
+  <input type="text" name="breed" placeholder="breed" value="">
+  <input type="text" name="age" placeholder="age" value="">
+  <textarea name="description" placeholder="description"></textarea>
+  <label><input type="checkbox" name="favorite" value="">&nbsp;favorite</label>
+  <input type="submit" value="Add Dog">
+  
+</form>
