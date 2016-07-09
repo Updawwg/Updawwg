@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -98,7 +99,7 @@ public class UpdawwgRestController {
     //might want to redirect
     //do not have to change from void
     @RequestMapping(path = "/dogs", method = RequestMethod.POST)
-    public void dog(HttpSession session,String name, String breed, int age, String description, MultipartFile photo) throws Exception {
+    public void dog(HttpSession session, String name, String breed, int age, String description, MultipartFile photo, HttpServletResponse response) throws Exception {
         String username = (String) session.getAttribute("username");
         if (username == null) {
             throw new Exception("Not logged in!");
@@ -117,6 +118,7 @@ public class UpdawwgRestController {
 
         dogs.save(dog);
         //redirect here how zach did in tomalikes
+        response.sendRedirect("/#/dogs");
     }
 
     // routes for posts
