@@ -5,7 +5,7 @@ module.exports = function(app) {
         //Service functions*******************************
         service.LogIn = function(username, password, callback) {
             $http.post('/users', {
-                    username: username,
+                    name: name,
                     password: password
                 })
                 .success(function(response) {
@@ -18,7 +18,7 @@ module.exports = function(app) {
 
             $rootScope.globals = {
                 currentUser: {
-                    username: username,
+                    name: name,
                     password: password
                 }
             };
