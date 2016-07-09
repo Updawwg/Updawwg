@@ -28,7 +28,7 @@ app.config(['$routeProvider', function($routeProvider) {
 
     .when('/add-dog-form', {
       templateUrl: 'add-dog-form.html',
-      controller: 'AddDogFormController',
+      // controller: 'AddDogFormController',
     })
 
     .when('/logout', {

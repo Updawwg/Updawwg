@@ -3,9 +3,9 @@
 *
 ********************************/
 
-module.exports = function(app){
+module.exports = function(app) {
 
-  app.controller('AddDogFormController', ['$scope', 'DawgInService', function($scope, DawgInService){
+  app.controller('AddDogFormController', ['$scope', 'DogService', function($scope, DogService){
 
 
       $scope.submitDog = function() {

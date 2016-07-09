@@ -4,9 +4,9 @@
 *
 ********************************/
 
-module.exports = function(app){
+module.exports = function(app) {
 
-  app.controller('AddDogFormController', ['$scope', 'DawgInService', function($scope, DawgInService){
+  app.controller('AddDogFormController', ['$scope', 'DogService', function($scope, DogService){
 
 
       $scope.submitDog = function() {
@@ -108,8 +108,7 @@ module.exports = function(app) {
       templateUrl: '',
       controller: ''
     }).when('/add-dog-form', {
-      templateUrl: 'add-dog-form.html',
-      controller: 'AddDogFormController'
+      templateUrl: 'add-dog-form.html'
     }).when('/logout', {
       templateUrl: 'dogIn.html',
       controller: 'DawgInController'
