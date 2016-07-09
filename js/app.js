@@ -5,7 +5,7 @@
 
 (function() {
 
-let app = angular.module('UpDawwgApp', ['ngRoute','ngAnimate']);
+let app = angular.module('UpDawwgApp', ['ngRoute','ngAnimate','ngCookies']);
 
 
 //router
@@ -48,6 +48,7 @@ app.config(['$routeProvider', function($routeProvider) {
 
 // Services
 require('./services/dog-service')(app);
+require('./services/pawthentication-service')(app);
 
 // Controllers
 require('./controllers/feed-controller')(app);
