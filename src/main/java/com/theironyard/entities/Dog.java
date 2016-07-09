@@ -29,7 +29,7 @@ public class Dog {
     String description;
 
     @Column(nullable =false)
-    boolean favorite;
+    int rating;
 
     @ManyToOne
     User user;
@@ -45,13 +45,13 @@ public class Dog {
     public Dog() {
     }
 
-    public Dog(String name, String image, String breed, int age, String description, boolean favorite, User user) {
+    public Dog(String name, String image, String breed, int age, String description, int rating, User user) {
         this.name = name;
         this.image = image;
         this.breed = breed;
         this.age = age;
         this.description = description;
-        this.favorite = favorite;
+        this.rating = rating;
         this.user = user;
     }
 
@@ -103,11 +103,11 @@ public class Dog {
         this.description = description;
     }
 
-    public Boolean getFavorite() {
-        return favorite;
+    public int getRating() {
+        return rating;
     }
 
-    public void setFavorite(Boolean favorite) {
-        this.favorite = favorite;
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 }

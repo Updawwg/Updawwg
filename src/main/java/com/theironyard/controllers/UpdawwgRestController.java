@@ -44,7 +44,7 @@ public class UpdawwgRestController {
         Server.createWebServer().start();
     }
 
-    @RequestMapping(path = "/", method = RequestMethod.GET)
+    /*@RequestMapping(path = "/", method = RequestMethod.GET)
     public String home(HttpSession session, Model model, String name, String image, String breed, int age, String description, Boolean favorite, String search) {
         String username = (String) session.getAttribute("username");
         if (username == null) {
@@ -67,7 +67,7 @@ public class UpdawwgRestController {
             model.addAttribute("dogs", doggies);
             return "feed";
         }
-    }
+    }*/
 
     // get/post routes for users
     @RequestMapping(path = "/users", method = RequestMethod.GET)
@@ -97,7 +97,7 @@ public class UpdawwgRestController {
     }
 
     @RequestMapping(path = "/dogs", method = RequestMethod.POST)
-    public void dog(HttpSession session,String name, String breed, int age, String description, Boolean favorite, MultipartFile photo) throws Exception {
+    public void dog(HttpSession session,String name, String breed, int age, String description, int rating, MultipartFile photo) throws Exception {
         String username = (String) session.getAttribute("username");
         if (username == null) {
             throw new Exception("Not logged in!");
@@ -111,7 +111,7 @@ public class UpdawwgRestController {
         FileOutputStream fos = new FileOutputStream(photoFile);
         fos.write(photo.getBytes());
 
-        Dog dog = new Dog(name, photoFile.getName(), breed, age, description, favorite, user);
+        Dog dog = new Dog(name, photoFile.getName(), breed, age, description, rating, user);
 
 
         dogs.save(dog);
@@ -135,5 +135,18 @@ public class UpdawwgRestController {
         User user = users.findOne(userId);
         Post post = new Post(replyId, message, user, dog);
         posts.save(post);
+    }
+
+    @RequestMapping(path="/ups", method = RequestMethod.POST)
+    public void ups(HttpSession session, Dog dog) throws Exception {
+        String username = (String) session.getAttribute("username");
+        if (username == null) {
+            throw new Exception("Not logged in!");
+        }
+        Dog d = dogs.findOne(dog.getId());
+        int rating = d.getRating();
+        rating++;
+        d.setRating(rating);
+        dogs.save(d);
     }
 }
