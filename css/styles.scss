@@ -1,3 +1,8 @@
+/*******************************
+* BASE STYLES & IMPORTS
+* .SCSS
+********************************/
+
 body {
   display: flex;
   width: 100%;
@@ -7,6 +12,7 @@ body {
 
 .main-container {
   padding-top: 10px;
+  margin-left: 145px;
 }
 
 footer {
@@ -24,3 +30,4 @@ footer {
 @import "dawgIn";
 @import "aside-nav";
 @import "feed";
+@import "add-dog-form";

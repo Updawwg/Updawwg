@@ -1,0 +1,25 @@
+/*******************************
+* _ADD DOG FORM
+* .SCSS
+********************************/
+
+.add-dog {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  span.input-group-addon {
+    width: 20%;
+  }
+  input {
+  }
+  div {
+    min-width: 500px;
+    height: auto;
+    background: transparent;
+    max-width: 500px;
+  }
+  .desc {
+    min-height: 100px;
+  }
+
+}
