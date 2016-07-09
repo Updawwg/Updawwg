@@ -13,7 +13,7 @@ app.config(['$routeProvider', function($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'dogIn.html',
-      conroller: 'DawgInController',
+      controller: 'DawgInController',
     })
 
     .when('/feed', {
@@ -51,7 +51,7 @@ require('./services/dog-service')(app);
 require('./services/pawthentication-service')(app);
 
 // Controllers
-require('./controllers/add-dog-form-controller');(app);
+require('./controllers/add-dog-form-controller')(app);
 require('./controllers/feed-controller')(app);
 require('./controllers/nav-controller')(app);
 require('./controllers/dawgIn-controller')(app);

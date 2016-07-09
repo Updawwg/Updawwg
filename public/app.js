@@ -7,13 +7,19 @@
 module.exports = function(app) {
 
   app.controller('AddDogFormController', ['$scope', 'DogService', function( $scope, DogService ){
+      $scope.dawgz = DogService.getDawgz();
 
-      //
       // $scope.submitDog = function() {
-      //   console.log(this);
+      //   let dogObj = {}
+      //
+      //
+      //   DogService.setDog(dogObj);
+      //   $scope.dawgz = DogService.getDawgz();
+      //
       // };
 
   }])
+
 }
 
 },{}],2:[function(require,module,exports){
@@ -100,7 +106,7 @@ module.exports = function(app) {
   app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/', {
       templateUrl: 'dogIn.html',
-      conroller: 'DawgInController'
+      controller: 'DawgInController'
     }).when('/feed', {
       templateUrl: 'feed.html',
       controller: 'FeedController'
@@ -125,7 +131,7 @@ module.exports = function(app) {
   require('./services/pawthentication-service')(app);
 
   // Controllers
-  require('./controllers/add-dog-form-controller');app;
+  require('./controllers/add-dog-form-controller')(app);
   require('./controllers/feed-controller')(app);
   require('./controllers/nav-controller')(app);
   require('./controllers/dawgIn-controller')(app);
@@ -142,7 +148,7 @@ module.exports = function(app) {
 
 module.exports = function(app) {
 
-  app.factory('DogService', function($http) {
+  app.factory('DogService', ['$http', function($http) {
 
       let dawgz = [];
 
@@ -170,14 +176,18 @@ module.exports = function(app) {
 
         },
 
-        setDog() {
-
+        setDog(data) {
+          $http({
+            url: '/dogs',
+            method: 'POST',
+            data: data,
+          })
 
         },
 
       } //********************************//
 
-  })//end DogService**********************//
+  }])//end DogService**********************//
 
 }
 
