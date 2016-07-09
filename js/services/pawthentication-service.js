@@ -4,7 +4,7 @@ module.exports = function(app) {
         let service = {};
         //Service functions*******************************
         service.LogIn = function(username, password, callback) {
-            $http.post('', {
+            $http.post('/users', {
                     username: username,
                     password: password
                 })
