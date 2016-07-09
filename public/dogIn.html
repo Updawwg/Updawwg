@@ -1,7 +1,6 @@
-
 <div>
-  <div class="badge">
-  <h1>
+    <div class="badge">
+        <h1>
   <span class = 'char1'>U</span>
   <span class = 'char2'>P</span>
   <span class = 'char3'>D</span>
@@ -11,11 +10,13 @@
   <span class = 'char7'>G</span>
 </h1>
     </div>
-  <i class="pindog"><b></b></i>
-  <div class = 'tounge'></div>
-  <div class="logContain">
-  <input type="text" class ='user' placeholder= 'name' ng-model='pawthentication.name'/>
-  <input type="text" class="password" placeholder = 'password' ng-model = 'pawthentication.password'>
-  <button ng-click = 'pawthenticate()'>Dog IN</button>
+    <i class="pindog"><b></b></i>
+    <div class='tounge'></div>
+    <div class="logContain">
+        <form name='form' ng-submit='pawthenticate()' role='form'></form>
+        <input type="text" class='user' placeholder='name' ng-model='pawthentication.name' required="" />
+        <input type="text" class="password" placeholder='password' ng-model='pawthentication.password' required/>
+        <button ng-click='pawthenticate()'>Dog IN</button>
+        </form>
     </div>
 </div>
