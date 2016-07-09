@@ -9,6 +9,7 @@ import com.theironyard.services.UserRepository;
 import com.theironyard.utils.PasswordStorage;
 import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,6 +42,31 @@ public class UpdawwgRestController {
     @PostConstruct
     public void init() throws SQLException {
         Server.createWebServer().start();
+    }
+
+    @RequestMapping(path = "/", method = RequestMethod.GET)
+    public String home(HttpSession session, Model model, String name, String image, String breed, int age, String description, Boolean favorite, String search) {
+        String username = (String) session.getAttribute("username");
+        if (username == null) {
+            return "dawgIn";
+
+        } else {
+            User user = users.findFirstByName(username);
+            Iterable<Dog> doggies;
+            if (search != null) {
+                doggies = dogs.searchDog(search);
+            } else if (name != null) {
+                doggies = dogs.findByName(name);
+            } else if (breed != null) {
+                doggies = dogs.findByBreed(breed);
+            }
+            else {
+                doggies = dogs.findByUser(user);
+            }
+
+            model.addAttribute("dogs", doggies);
+            return "feed";
+        }
     }
 
     // get/post routes for users
