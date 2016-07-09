@@ -11,6 +11,12 @@ import org.springframework.data.repository.CrudRepository;
 public interface UserRepository extends CrudRepository<User, Integer> {
     public User findFirstByName(String name);
 
+<<<<<<< HEAD
 //    @Query("SELECT r from Dog r WHERE r.dog LIKE ?1%")
 //    public Iterable<Dog> searchDog(String dog);
+=======
+
+    //@Query("SELECT r from Dog r WHERE r.dog LIKE ?1%")
+    //public Iterable<Dog> searchDog(String dog);
+>>>>>>> c4616babd805b7414e7278749498479eb9f5c633
 }
