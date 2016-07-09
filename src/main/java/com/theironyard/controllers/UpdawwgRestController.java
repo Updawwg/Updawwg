@@ -14,9 +14,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.SQLException;
 
 /**
@@ -93,8 +97,21 @@ public class UpdawwgRestController {
     }
 
     @RequestMapping(path = "/dogs", method = RequestMethod.POST)
-    public void dog(String name, String image, String breed, int age, String description, Boolean favorite) {
-        Dog dog = new Dog(name, image, breed, age, description, favorite);
+    public void dog(HttpSession session,String name, String breed, int age, String description, Boolean favorite, MultipartFile photo) throws Exception {
+        String username = (String) session.getAttribute("username");
+        if (username == null) {
+            throw new Exception("Not logged in!");
+        }
+
+        File dir = new File("public/assets");
+        dir.mkdirs();
+        File photoFile = File.createTempFile("photo", photo.getOriginalFilename(), dir);
+        FileOutputStream fos = new FileOutputStream(photoFile);
+        fos.write(photo.getBytes());
+
+        Dog dog = new Dog(name, photoFile.getName(), breed, age, description, favorite);
+
+
         dogs.save(dog);
     }
 
@@ -105,7 +122,13 @@ public class UpdawwgRestController {
     }
 
     @RequestMapping(path = "/posts", method = RequestMethod.POST)
-    public void post(int replyId, String message, int dogId, int userId) {
+    public void post(HttpSession session, int replyId, String message, int dogId, int userId) throws Exception {
+
+        String username = (String) session.getAttribute("username");
+        if (username == null) {
+            throw new Exception("Not logged in!");
+        }
+
         Dog dog = dogs.findOne(dogId);
         User user = users.findOne(userId);
         Post post = new Post(replyId, message, user, dog);
