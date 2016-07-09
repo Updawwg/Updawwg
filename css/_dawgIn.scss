@@ -1,0 +1,151 @@
+div {
+    width: 400px;
+    height: 300px;
+    background: #eee;
+    margin: 0 auto;
+}
+@keyframes pant {
+    0% {
+        top: 172px;
+    }
+    50% {
+        top: 176px;
+    }
+    100% {
+        top: 172px;
+    }
+}
+@mixin pseudo() {
+    display: block;
+    content: "";
+}
+.pindog {
+    margin: 0 auto;
+    display: block;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 108px;
+    left: 30px;
+    background: #222;
+}
+.pindog:before {
+    @include pseudo();
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: -60px;
+    background: #eee;
+    z-index: 2;
+}
+.pindog:after {
+    @include pseudo();
+    border-radius: 50% 50% 50% 10%;
+    transform: rotate(-45deg);
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: -15px;
+    left: -76px;
+    background: #222;
+    z-index: 1;
+}
+.pindog b {
+    display: block;
+    border-radius: 20%;
+    width: 0;
+    height: 0;
+    border: 18px solid transparent;
+    border-top: 22px solid #222;
+    position: absolute;
+    top: 58px;
+    left: -38px;
+    background: transparent;
+}
+.pindog b:before {
+    @include pseudo();
+    border-radius: 50%;
+    width: 36px;
+    height: 29px;
+    border: 8px solid transparent;
+    border-bottom: 8px solid #222;
+    border-right: 8px solid #222;
+    position: absolute;
+    top: -17px;
+    left: -31px;
+    background: transparent;
+    z-index: 1;
+}
+.pindog b:after {
+    @include pseudo();
+    border-radius: 50%;
+    width: 36px;
+    height: 29px;
+    border: 8px solid transparent;
+    border-bottom: 8px solid #222;
+    border-left: 8px solid #222;
+    position: absolute;
+    top: -17px;
+    left: -4px;
+    background: transparent;
+    z-index: 1;
+}
+.tounge {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 175px;
+    background-color: red;
+    border-radius: 50px/100px;
+    z-index: 0;
+    transition: all 300ms ease;
+    animation: pant 1s ease-in-out infinite;
+}
+h1 span {
+    font: 26px Monaco, MonoSpace;
+    height: 200px;
+    position: absolute;
+    width: 20px;
+    left: 0;
+    top: 0;
+    transform-origin: bottom center;
+}
+.badge {
+    position: fixed;
+    width: 1px;
+    left: 23%;
+    color: black;
+    border-radius: 50%;
+    transform: rotate(-23deg);
+    background-color: transparent !important;
+}
+.char1 {
+    transform: rotate(6deg);
+}
+.char2 {
+    transform: rotate(12deg);
+}
+.char3 {
+    transform: rotate(18deg);
+}
+.char4 {
+    transform: rotate(24deg);
+}
+.char5 {
+    transform: rotate(30deg);
+}
+.char6 {
+    transform: rotate(36deg);
+}
+.char7 {
+    transform: rotate(42deg);
+}
+.logContain {
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 11%;
+}
