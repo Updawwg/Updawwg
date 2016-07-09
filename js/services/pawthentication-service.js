@@ -4,7 +4,7 @@ module.exports = function(app) {
         let service = {};
         //Service functions*******************************
         service.LogIn = function(username, password, callback) {
-            $http.post('', {
+            $http.get('/users', {
                     username: username,
                     password: password
                 })
@@ -16,9 +16,6 @@ module.exports = function(app) {
 
             $rootScope.globals = {
                 currentUser: {
-                    // this is what you had but it was throwing errors in my gulp.
-                    // this.username: username,
-                    // this.password: password
                     username: username,
                     password: password
                 }
