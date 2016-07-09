@@ -12,7 +12,5 @@ public interface UserRepository extends CrudRepository<User, Integer> {
     public User findFirstByName(String name);
 
 
-    //@Query("SELECT r from Dog r WHERE r.dog LIKE ?1%")
-    //public Iterable<Dog> searchDog(String dog);
 
 }
