@@ -1,6 +1,6 @@
 'use strict'
 module.exports = function(app) {
-    app.factory('PawthenticationService', [$http, $rootScope, $cookies, function($http, $rootScope,$cookies) {
+    app.factory('PawthenticationService', ['$http', '$rootScope', '$cookies', function($http, $rootScope,$cookies) {
         let service = {};
         //Service functions*******************************
         service.LogIn = function(username, password, callback) {
@@ -16,8 +16,11 @@ module.exports = function(app) {
 
             $rootScope.globals = {
                 currentUser: {
-                    this.username: username,
-                    this.password: password
+                    // this is what you had but it was throwing errors in my gulp.
+                    // this.username: username,
+                    // this.password: password
+                    username: username,
+                    password: password
                 }
             };
         $cookies.put('globals', $rootScope.globals)

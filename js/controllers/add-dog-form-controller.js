@@ -5,7 +5,7 @@
 
 module.exports = function(app){
 
-  app.controller('AddDogFormController'['$scope','DawgInService',function($scope,DawgInService){
+  app.controller('AddDogFormController', ['$scope','DawgInService',function($scope,DawgInService){
 
   }])
 }

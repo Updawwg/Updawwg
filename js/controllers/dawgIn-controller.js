@@ -6,7 +6,7 @@
 
 module.exports = function(app) {
 
-    app.controller('DawgInController' ['$scope', '$rootScope', 'PawthenticationService', function($scope, $rootScope, PawthenticationService) {
+    app.controller('DawgInController', ['$scope', '$rootScope', 'PawthenticationService', function($scope, $rootScope, PawthenticationService) {
         PawthenticationService.ClearCredentials();
 
         $scope.logIn = function() {
