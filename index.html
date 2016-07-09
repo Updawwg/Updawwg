@@ -1,51 +1,54 @@
 <!DOCTYPE html>
 <html ng-app="UpDawwgApp">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>UpDawwg</title>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UpDawwg</title>
 
 
-        <!-- import STYLES & SCRIPTS-->
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-animate.min.js" charset="utf-8"></script>
+    <!-- import STYLES & SCRIPTS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-animate.min.js" charset="utf-8"></script>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-        <!-- NAV -->
-        <aside class="side-nav" ng-controller="NavController">
-          <img class="rope" src="./assets/hanginthere.png" alt="LOGO" />
-          <h4>UpDawwg</h4>
-          <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" ng-click="isCollapsed = !isCollapsed"></span>
+<body>
 
-          <ul id="nav-list" class="cssSlideUp" ng-show="isCollapsed">
+    <!-- NAV -->
+    <aside class="side-nav" ng-controller="NavController">
+        <img class="rope" src="./assets/hanginthere.png" alt="LOGO" />
+        <h4>UpDawwg</h4>
+        <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" ng-click="isCollapsed = !isCollapsed"></span>
+
+        <ul id="nav-list" class="cssSlideUp" ng-show="isCollapsed">
             <li><a href="#/add-dog-form"> add dog</a></li>
             <li><a href="#/about"> about</a></li>
             <li><a href="#/feed"> feed</a></li>
             <li><a href="#/heatmap"> heatmap</a></li>
             <li><a href="#/logout"> log out</a></li>
-          </ul>
+        </ul>
 
-        </aside>
+    </aside>
 
-        <!-- MAIN -->
-        <section class="main-container">
-            <main ng-view id="view">
-
-
-
-            </main>
-            <footer>
-                <h6>by: Ben John Will Damon Caleb</h6>
-            </footer>
-        </section>
+    <!-- MAIN -->
+    <section class="main-container">
+        <main ng-view id="view">
 
 
-        <!--MY SCRIPTS-->
-        <script src="app.js" charset="utf-8"></script>
-    </body>
+
+        </main>
+        <footer>
+            <h6>by: Ben John Will Damon Caleb</h6>
+        </footer>
+    </section>
+
+
+    <!--MY SCRIPTS-->
+    <script src="app.js" charset="utf-8"></script>
+</body>
+
 </html>
