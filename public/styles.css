@@ -1,3 +1,7 @@
+/*******************************
+* BASE STYLES & IMPORTS
+* .SCSS
+********************************/
 body {
   display: flex;
   width: 100%;
@@ -5,7 +9,8 @@ body {
   background: #766862; }
 
 .main-container {
-  padding-top: 10px; }
+  padding-top: 10px;
+  margin-left: 145px; }
 
 footer {
   width: 100%;
@@ -151,6 +156,7 @@ div {
 * .SCSS
 ********************************/
 .side-nav {
+  position: fixed;
   z-index: 9999;
   min-width: 120px;
   max-width: 200px;
@@ -231,3 +237,21 @@ video {
   height: 95px;
   position: absolute;
   top: 115px; }
+
+/*******************************
+* _ADD DOG FORM
+* .SCSS
+********************************/
+.add-dog {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start; }
+  .add-dog span.input-group-addon {
+    width: 20%; }
+  .add-dog div {
+    min-width: 500px;
+    height: auto;
+    background: transparent;
+    max-width: 500px; }
+  .add-dog .desc {
+    min-height: 100px; }
