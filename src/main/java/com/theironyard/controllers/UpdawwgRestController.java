@@ -95,7 +95,8 @@ public class UpdawwgRestController {
     public Iterable<Dog> getDogs() {
         return dogs.findAll();
     }
-
+    //might want to redirect
+    //do not have to change from void
     @RequestMapping(path = "/dogs", method = RequestMethod.POST)
     public void dog(HttpSession session,String name, String breed, int age, String description, MultipartFile photo) throws Exception {
         String username = (String) session.getAttribute("username");
@@ -115,6 +116,7 @@ public class UpdawwgRestController {
 
 
         dogs.save(dog);
+        //redirect here how zach did in tomalikes
     }
 
     // routes for posts
@@ -137,8 +139,9 @@ public class UpdawwgRestController {
         posts.save(post);
     }
 
+
     @RequestMapping(path="/ups", method = RequestMethod.POST)
-    public void ups(HttpSession session, Dog dog) throws Exception {
+    public void ups(HttpSession session, @RequestBody Dog dog) throws Exception {
         String username = (String) session.getAttribute("username");
         if (username == null) {
             throw new Exception("Not logged in!");
