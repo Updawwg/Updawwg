@@ -78,7 +78,7 @@ public class UpdawwgRestController {
 
     // make login happen in here
     @RequestMapping(path = "/users", method = RequestMethod.POST)
-    public void user(User user, HttpSession session) throws Exception {
+    public void user(@RequestBody User user, HttpSession session) throws Exception {
         User userFromDB = users.findFirstByName(user.getName());
         if (userFromDB == null) {
             user.setPassword(PasswordStorage.createHash(user.getPassword()));
