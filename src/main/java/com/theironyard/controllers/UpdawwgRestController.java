@@ -103,13 +103,15 @@ public class UpdawwgRestController {
             throw new Exception("Not logged in!");
         }
 
+        User user = users.findFirstByName(username);
+
         File dir = new File("public/assets");
         dir.mkdirs();
         File photoFile = File.createTempFile("photo", photo.getOriginalFilename(), dir);
         FileOutputStream fos = new FileOutputStream(photoFile);
         fos.write(photo.getBytes());
 
-        Dog dog = new Dog(name, photoFile.getName(), breed, age, description, favorite);
+        Dog dog = new Dog(name, photoFile.getName(), breed, age, description, favorite, user);
 
 
         dogs.save(dog);
