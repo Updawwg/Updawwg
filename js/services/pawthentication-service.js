@@ -7,10 +7,8 @@ module.exports = function(app) {
             $http.post('/users', {
                     name: name,
                     password: password
-                })
-                .success(function(response) {
+                }).then(function(response) {
                     callback(response);
-                }).then(function() {
                     $location.path('/about');
                 });
         }; //service.LogIn ends***********************
