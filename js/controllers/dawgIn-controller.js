@@ -10,7 +10,6 @@ module.exports = function(app) {
         PawthenticationService.ClearCredentials();
 
         $scope.logIn = function() {
-            console.log($scope.username)
             PawthenticationService.LogIn($scope.username, $scope.password, function(response) {
                 if (response.success) {
                     PawthenticationService.SetCredentials($scope.username, $scope.password);

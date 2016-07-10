@@ -29,6 +29,9 @@ import java.sql.SQLException;
  */
 @RestController
 public class UpdawwgRestController {
+    // folder for photos
+    public static String PHOTOS_DIR = "photos";
+
     // link tables
     @Autowired
     DogRepository dogs;
@@ -99,7 +102,7 @@ public class UpdawwgRestController {
     //might want to redirect
     //do not have to change from void
     @RequestMapping(path = "/dogs", method = RequestMethod.POST)
-    public void dog(HttpSession session, String name, String breed, int age, String description, MultipartFile photo, HttpServletResponse response) throws Exception {
+    public void dog(HttpSession session, String name, String breed, int age, String description, MultipartFile image, HttpServletResponse response) throws Exception {
         String username = (String) session.getAttribute("username");
         if (username == null) {
             throw new Exception("Not logged in!");
@@ -107,18 +110,19 @@ public class UpdawwgRestController {
 
         User user = users.findFirstByName(username);
 
-        File dir = new File("public/assets");
+        File dir = new File("public/assets/" + PHOTOS_DIR);
         dir.mkdirs();
-        File photoFile = File.createTempFile("photo", photo.getOriginalFilename(), dir);
+
+        File photoFile = File.createTempFile("photo", image.getOriginalFilename(), dir);
         FileOutputStream fos = new FileOutputStream(photoFile);
-        fos.write(photo.getBytes());
+        fos.write(image.getBytes());
 
         Dog dog = new Dog(name, photoFile.getName(), breed, age, description, 0, user);
 
 
         dogs.save(dog);
         //redirect here how zach did in tomalikes
-        response.sendRedirect("/#/dogs");
+        response.sendRedirect("/#/feed");
     }
 
     // routes for posts
@@ -153,5 +157,11 @@ public class UpdawwgRestController {
         rating++;
         d.setRating(rating);
         dogs.save(d);
+    }
+
+    @RequestMapping(path = "/logout", method = RequestMethod.GET)
+    public void logout(HttpSession session, HttpServletResponse response) throws IOException {
+        session.invalidate();
+        response.sendRedirect("/#/");
     }
 }

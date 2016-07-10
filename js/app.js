@@ -16,14 +16,19 @@ app.config(['$routeProvider', function($routeProvider) {
       controller: 'DawgInController',
     })
 
+    .when('/registration',{
+      templateUrl: 'registration.html',
+      controller: 'register',
+    })
+
     .when('/feed', {
       templateUrl: 'feed.html',
       controller: 'FeedController',
     })
 
     .when('/details', {
-      templateUrl: '',
-      controller: '',
+      templateUrl: 'details.html',
+      controller: 'DetailsController',
     })
 
     .when('/add-dog-form', {
@@ -31,10 +36,10 @@ app.config(['$routeProvider', function($routeProvider) {
       controller: 'AddDogFormController'
     })
 
-    .when('/logout', {
-      templateUrl: 'dogIn.html',
-      controller: 'DawgInController',
-    })
+//    .when('/logout', {
+//      templateUrl: 'dogIn.html',
+//      controller: 'DawgInController',
+//    })
 
     .when('/about', {
       templateUrl: 'about.html',
@@ -52,6 +57,7 @@ require('./services/pawthentication-service')(app);
 
 // Controllers
 require('./controllers/add-dog-form-controller')(app);
+require('./controllers/details-controller')(app);
 require('./controllers/feed-controller')(app);
 require('./controllers/nav-controller')(app);
 require('./controllers/dawgIn-controller')(app);

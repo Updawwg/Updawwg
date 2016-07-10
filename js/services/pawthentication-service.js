@@ -4,14 +4,11 @@ module.exports = function(app) {
         let service = {};
         //Service functions*******************************
         service.LogIn = function(name, password, callback) {
-            console.log(name,password);
             $http.post('/users', {
                     name: name,
                     password: password
-                })
-                .success(function(response) {
+                }).then(function(response) {
                     callback(response);
-                }).then(function() {
                     $location.path('/about');
                 });
         }; //service.LogIn ends***********************
