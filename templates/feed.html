@@ -1,22 +1,17 @@
 <!-- ng-controller="FeedController" -->
 
-<section >
+<section>
       <button type="button" name="pop" ng-click="showDogs()">SHOW ME DOGS NOW!</button>
-      <!-- <video id="videoGfy0" autoplay="autoplay" muted="" loop="" ng-attr-poster="//thumbs.gfycat.com/{{ feeds.videoPageGfyFrame.gfyName }}-poster.jpg" poster="//thumbs.gfycat.com/MemorableYellowishDungbeetle-poster.jpg">
-        <source data-ng-src="https://zippy.gfycat.com/MemorableYellowishDungbeetle.webm" type="video/webm" src="https://zippy.gfycat.com/MemorableYellowishDungbeetle.webm">
-        <source data-ng-src="https://fat.gfycat.com/MemorableYellowishDungbeetle.mp4" type="video/mp4" src="https://fat.gfycat.com/MemorableYellowishDungbeetle.mp4">
-      </video> -->
-        <!-- <video ng-click="deets()" id="dog{{$index}}" autoplay="autoplay" muted="" loop="" >
-          <source type="video/webm" src="https://zippy.gfycat.com/MemorableYellowishDungbeetle.webm">
-        </video> -->
 
 
-    <div class="dog-feed" ng-click="deets(dog)" ng-repeat="dog in dawgz">
-      <h1>{{dog.name}}</h1>
-      <video id="dog{{$index}}" autoplay="autoplay" muted="" loop="" >
-        <source type="video/webm" ng-src="{{dog.image}}">
-      </video>
-    </div>
+      <div class="dog-feed" ng-click="deets(dog)" ng-repeat="dog in dawgz">
+
+        <h1>{{dog.name}}</h1>
+        <video id="dog{{$index}}" autoplay="autoplay" muted="" loop="" >
+          <source type="video/webm" ng-src="{{dog.image}}">
+        </video>
+
+      </div>
 
 
 </section>
