@@ -3,7 +3,8 @@ module.exports = function(app) {
     app.factory('PawthenticationService', ['$http', '$rootScope', '$cookies', '$location', function($http, $rootScope, $cookies, $location) {
         let service = {};
         //Service functions*******************************
-        service.LogIn = function(username, password, callback) {
+        service.LogIn = function(name, password, callback) {
+            console.log(username,password);
             $http.post('/users', {
                     name: name,
                     password: password
