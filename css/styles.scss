@@ -11,6 +11,7 @@ body {
 }
 
 .main-container {
+  width: 90%;
   padding-top: 10px;
   margin-left: 145px;
 }
@@ -31,3 +32,4 @@ footer {
 @import "aside-nav";
 @import "feed";
 @import "add-dog-form";
+@import "details";
