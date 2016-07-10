@@ -17,12 +17,8 @@ module.exports = function(app) {
       };
 
       $scope.submit = function() {
-        console.log($scope.dogObj);
-        // let dogObj = {}
-        //
-        //
-        // DogService.setDog(dogObj);
-        // $scope.dawgz = DogService.getDawgz();
+        
+        $scope.dawgz = DogService.getDawgz();
         location.href = "#/feed"
 
       };
@@ -71,12 +67,21 @@ module.exports = function(app) {
     $scope.comment = '';
     $scope.dog = DogService.getDeets();
 
+    $scope.url = function (path) {
+      return './assets/' + path;
+    };
+
+
+    if ($scope.status === false) {
+      $location.path('/feed');
+    }
+
 
 
     // add ups!
     $scope.upDawg = function () {
-      console.log("dogD", $scope.dog);
       DogService.setUps($scope.dog);
+
     }
 
 
@@ -103,6 +108,10 @@ module.exports = function(app) {
     ********************************/
     $scope.dawgz = DogService.getDawgz();
     $scope.dog = {};
+    
+    $scope.url = function (path) {
+      return './assets/' + path;
+    };
 
 
     $scope.deets = function (dogObj) {
@@ -229,7 +238,7 @@ module.exports = function(app) {
       return {
         getDawgz() {
           $http({
-            url: './mock/dogs.json',
+            url: './dogs',
             method: 'GET'
           }).then(function(response){
             dawgz = response.data;
@@ -262,6 +271,7 @@ module.exports = function(app) {
             method: 'POST',
             data: dogObj,
           })
+
         },
         getDeets(){
           return dogD;

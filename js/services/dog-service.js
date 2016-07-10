@@ -27,7 +27,7 @@ module.exports = function(app) {
       return {
         getDawgz() {
           $http({
-            url: './mock/dogs.json',
+            url: './dogs',
             method: 'GET'
           }).then(function(response){
             dawgz = response.data;
@@ -60,6 +60,7 @@ module.exports = function(app) {
             method: 'POST',
             data: dogObj,
           })
+
         },
         getDeets(){
           return dogD;

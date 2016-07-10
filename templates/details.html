@@ -2,8 +2,8 @@
 
 <section id="gyf-deets">
   <h1>{{dog.name}}</h1>
-  <video autoplay="autoplay" muted="" loop="" >
-    <source type="video/webm" ng-src="{{dog.image}}">
+  <video autoplay="autoplay" muted="" loop="" ng-attr-poster="{{url(dog.image)}}">
+    <source type="video/webm" ng-src="{{url(dog.image)}}">
   </video>
 
   <button ng-click="upDawg()" type="button" name="ups">Ups</button>

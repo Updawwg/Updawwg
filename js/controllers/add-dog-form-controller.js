@@ -16,12 +16,8 @@ module.exports = function(app) {
       };
 
       $scope.submit = function() {
-        console.log($scope.dogObj);
-        // let dogObj = {}
-        //
-        //
-        // DogService.setDog(dogObj);
-        // $scope.dawgz = DogService.getDawgz();
+        
+        $scope.dawgz = DogService.getDawgz();
         location.href = "#/feed"
 
       };
