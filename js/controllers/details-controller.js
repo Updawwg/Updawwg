@@ -15,12 +15,21 @@ module.exports = function(app) {
     $scope.comment = '';
     $scope.dog = DogService.getDeets();
 
+    $scope.url = function (path) {
+      return './assets/' + path;
+    };
+
+
+    if ($scope.status === false) {
+      $location.path('/feed');
+    }
+
 
 
     // add ups!
     $scope.upDawg = function () {
-      console.log("dogD", $scope.dog);
       DogService.setUps($scope.dog);
+
     }
 
 

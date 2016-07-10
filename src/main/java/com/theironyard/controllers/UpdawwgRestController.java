@@ -99,7 +99,7 @@ public class UpdawwgRestController {
     //might want to redirect
     //do not have to change from void
     @RequestMapping(path = "/dogs", method = RequestMethod.POST)
-    public void dog(HttpSession session, String name, String breed, int age, String description, MultipartFile photo, HttpServletResponse response) throws Exception {
+    public void dog(HttpSession session, String name, String breed, int age, String description, MultipartFile image, HttpServletResponse response) throws Exception {
         String username = (String) session.getAttribute("username");
         if (username == null) {
             throw new Exception("Not logged in!");
@@ -109,9 +109,9 @@ public class UpdawwgRestController {
 
         File dir = new File("public/assets");
         dir.mkdirs();
-        File photoFile = File.createTempFile("photo", photo.getOriginalFilename(), dir);
+        File photoFile = File.createTempFile("photo", image.getOriginalFilename(), dir);
         FileOutputStream fos = new FileOutputStream(photoFile);
-        fos.write(photo.getBytes());
+        fos.write(image.getBytes());
 
         Dog dog = new Dog(name, photoFile.getName(), breed, age, description, 0, user);
 
