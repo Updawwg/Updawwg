@@ -113,16 +113,18 @@ public class UpdawwgRestController {
         File dir = new File("public/assets/" + PHOTOS_DIR);
         dir.mkdirs();
 
-        File photoFile = File.createTempFile("photo", image.getOriginalFilename(), dir);
-        FileOutputStream fos = new FileOutputStream(photoFile);
-        fos.write(image.getBytes());
+        if (!image.getContentType().contains("image")) {
+            response.sendRedirect("/#/add-dog-form");
+        }
+        else {
+            File photoFile = File.createTempFile("photo", image.getOriginalFilename(), dir);
+            FileOutputStream fos = new FileOutputStream(photoFile);
+            fos.write(image.getBytes());
 
-        Dog dog = new Dog(name, photoFile.getName(), breed, age, description, 0, user);
-
-
-        dogs.save(dog);
-        //redirect here how zach did in tomalikes
-        response.sendRedirect("/#/feed");
+            Dog dog = new Dog(name, photoFile.getName(), breed, age, description, 0, user);
+            dogs.save(dog);
+            response.sendRedirect("/#/feed");
+        }
     }
 
     // routes for posts
