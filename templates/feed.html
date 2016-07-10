@@ -1,32 +1,17 @@
 <!-- ng-controller="FeedController" -->
 
-<section >
+<section>
+      <button type="button" name="pop" ng-click="showDogs()">SHOW ME DOGS NOW!</button>
 
-      <video id="videoGfy0" autoplay="autoplay" muted="" loop="" ng-attr-poster="//thumbs.gfycat.com/{{ feeds.videoPageGfyFrame.gfyName }}-poster.jpg" poster="//thumbs.gfycat.com/MemorableYellowishDungbeetle-poster.jpg">
-        <source data-ng-src="https://zippy.gfycat.com/MemorableYellowishDungbeetle.webm" type="video/webm" src="https://zippy.gfycat.com/MemorableYellowishDungbeetle.webm">
-        <source data-ng-src="https://fat.gfycat.com/MemorableYellowishDungbeetle.mp4" type="video/mp4" src="https://fat.gfycat.com/MemorableYellowishDungbeetle.mp4">
-      </video>
 
-      <video autoplay="" loop="" class="video above ng-scope" muted="" ng-attr-poster="{{imageUrl}}" itemscope="" itemtype="http://schema.org/VideoObject" poster="https://thumbs.gfycat.com/WellinformedSomberArthropods-poster.jpg">
-          <source data-ng-src="https://thumbs.gfycat.com/WellinformedSomberArthropods-mobile.mp4" type="video/mp4" src="https://thumbs.gfycat.com/WellinformedSomberArthropods-mobile.mp4">
-          <source data-ng-src="https://zippy.gfycat.com/WellinformedSomberArthropods.mp4" type="video/mp4" src="https://zippy.gfycat.com/WellinformedSomberArthropods.mp4">
-          <source data-ng-src="https://fat.gfycat.com/WellinformedSomberArthropods.webm" type="video/webm" src="https://fat.gfycat.com/WellinformedSomberArthropods.webm">
-      </video>
+      <div class="dog-feed" ng-click="deets(dog)" ng-repeat="dog in dawgz">
 
-      <video class='twoSize' autoplay="" loop="" class="video above ng-scope" muted="" ng-attr-poster="{{imageUrl}}" itemscope="" itemtype="http://schema.org/VideoObject" poster="https://thumbs.gfycat.com/PartialRawAmericanlobster-poster.jpg">
-          <source data-ng-src="https://thumbs.gfycat.com/PartialRawAmericanlobster-mobile.mp4" type="video/mp4" src="https://thumbs.gfycat.com/PartialRawAmericanlobster-mobile.mp4">
-          <source data-ng-src="https://giant.gfycat.com/PartialRawAmericanlobster.mp4" type="video/mp4" src="https://giant.gfycat.com/PartialRawAmericanlobster.mp4">
-          <source data-ng-src="https://fat.gfycat.com/PartialRawAmericanlobster.webm" type="video/webm" src="https://fat.gfycat.com/PartialRawAmericanlobster.webm">
-      </video>
-
-      <video class='threeSize' autoplay="autoplay" muted="" ng-attr-poster="{{ detailPlayer.list[detailPlayer.index].thumbnail}}" loop="">
-            <source data-ng-src="https://fat.gfycat.com/ScarceInsistentEnglishsetter.webm" type="video/webm" src="https://fat.gfycat.com/ScarceInsistentEnglishsetter.webm">
-            <source data-ng-src="https://giant.gfycat.com/ScarceInsistentEnglishsetter.mp4" type="video/mp4" src="https://giant.gfycat.com/ScarceInsistentEnglishsetter.mp4">
+        <h1>{{dog.name}}</h1>
+        <video id="dog{{$index}}" autoplay="autoplay" muted="" loop="" >
+          <source type="video/webm" ng-src="{{dog.image}}">
         </video>
 
-    <div class="dog" ng-click="deets()" ng-repeat="dog in dawgz">
-        <img src="" alt="" />
-    </div>
+      </div>
 
 
 </section>

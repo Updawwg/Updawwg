@@ -8,6 +8,7 @@ module.exports = function(app) {
   app.factory('DogService', ['$http', function($http) {
 
       let dawgz = [];
+      let dogD = {};
 
       let dog = {
         name: '',
@@ -25,14 +26,24 @@ module.exports = function(app) {
       ********************************/
       return {
         getDawgz() {
+          $http({
+            url: './mock/dogs.json',
+            method: 'GET'
+          }).then(function(response){
+            dawgz = response.data;
+            console.log("before promise",dawgz);
+            return dawgz;
+          })
           return dawgz;
         },
 
-        getDog(name) {
-          //filter: find dog by name
-
+        dogDeets(dogObj) {
+          dogD = dogObj;
+          console.log(dogD);
+          return dogD
         },
 
+        //adds new dog to database
         setDog(data) {
           $http({
             url: '/dogs',
@@ -42,8 +53,20 @@ module.exports = function(app) {
 
         },
 
+        // increment UPs (addition happens in the back end)
+        setUps(dogObj){
+          $http({
+            url: '/ups',
+            method: 'POST',
+            data: dogObj,
+          })
+        },
+        getDeets(){
+          return dogD;
+        },
+
       } //********************************//
 
-  }])//end DogService**********************//
+  }])
 
 }

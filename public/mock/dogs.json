@@ -1,0 +1,34 @@
+[
+  {"id": 1,
+    "name": "Barf",
+    "image": "./assets/MemorableYellowishDungbeetle.webm",
+    "breed": "bull",
+    "age": 1,
+    "description": "lovely dog with lots to give",
+    "ups": 200
+  },
+  {"id": 1,
+    "name": "Barf",
+    "image": "./assets/MemorableYellowishDungbeetle.webm",
+    "breed": "bull",
+    "age": 1,
+    "description": "lovely dog with lots to give",
+    "ups": 200
+  },
+  {"id": 1,
+    "name": "Barf",
+    "image": "./assets/MemorableYellowishDungbeetle.webm",
+    "breed": "bull",
+    "age": 1,
+    "description": "lovely dog with lots to give",
+    "ups": 200
+  },
+  {"id": 1,
+    "name": "Barf",
+    "image": "./assets/MemorableYellowishDungbeetle.webm",
+    "breed": "bull",
+    "age": 1,
+    "description": "lovely dog with lots to give",
+    "ups": 200
+  }
+]
