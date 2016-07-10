@@ -16,6 +16,11 @@ app.config(['$routeProvider', function($routeProvider) {
       controller: 'DawgInController',
     })
 
+    .when('/registration',{
+      templateUrl: 'registration.html',
+      controller: 'register',
+    })
+
     .when('/feed', {
       templateUrl: 'feed.html',
       controller: 'FeedController',
@@ -31,10 +36,10 @@ app.config(['$routeProvider', function($routeProvider) {
       controller: 'AddDogFormController'
     })
 
-    .when('/logout', {
-      templateUrl: 'dogIn.html',
-      controller: 'DawgInController',
-    })
+//    .when('/logout', {
+//      templateUrl: 'dogIn.html',
+//      controller: 'DawgInController',
+//    })
 
     .when('/about', {
       templateUrl: 'about.html',

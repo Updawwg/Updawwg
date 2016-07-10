@@ -167,6 +167,9 @@ module.exports = function(app) {
     $routeProvider.when('/', {
       templateUrl: 'dogIn.html',
       controller: 'DawgInController'
+    }).when('/registration', {
+      templateUrl: 'registration.html',
+      controller: 'register'
     }).when('/feed', {
       templateUrl: 'feed.html',
       controller: 'FeedController'
@@ -176,10 +179,14 @@ module.exports = function(app) {
     }).when('/add-dog-form', {
       templateUrl: 'add-dog-form.html',
       controller: 'AddDogFormController'
-    }).when('/logout', {
-      templateUrl: 'dogIn.html',
-      controller: 'DawgInController'
-    }).when('/about', {
+    })
+
+    //    .when('/logout', {
+    //      templateUrl: 'dogIn.html',
+    //      controller: 'DawgInController',
+    //    })
+
+    .when('/about', {
       templateUrl: 'about.html'
     }).otherwise({
       redirectTo: '/404'
@@ -286,10 +293,8 @@ module.exports = function(app) {
             $http.post('/users', {
                     name: name,
                     password: password
-                })
-                .success(function(response) {
+                }).then(function(response) {
                     callback(response);
-                }).then(function() {
                     $location.path('/about');
                 });
         }; //service.LogIn ends***********************
