@@ -7,8 +7,8 @@
       <div class="dog-feed" ng-click="deets(dog)" ng-repeat="dog in dawgz">
 
         <h1>{{dog.name}}</h1>
-        <video id="dog{{$index}}" autoplay="autoplay" muted="" loop="" >
-          <source type="video/webm" ng-src="{{dog.image}}">
+        <video id="dog{{$index}}" autoplay="autoplay" muted="" loop="" ng-attr-poster="{{url(dog.image)}}" >
+          <source type="video/webm" ng-src={{url(dog.image)}}>
         </video>
 
       </div>

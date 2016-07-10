@@ -12,6 +12,10 @@ module.exports = function(app) {
     ********************************/
     $scope.dawgz = DogService.getDawgz();
     $scope.dog = {};
+    
+    $scope.url = function (path) {
+      return './assets/' + path;
+    };
 
 
     $scope.deets = function (dogObj) {
