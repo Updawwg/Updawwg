@@ -8,15 +8,24 @@ module.exports = function(app) {
 
   app.controller('AddDogFormController', ['$scope', 'DogService', function( $scope, DogService ){
       $scope.dawgz = DogService.getDawgz();
+      $scope.dogObj = {
+        name: $scope.name,
+        image: $scope.image,
+        breed:$scope.breed,
+        age: $scope.age,
+        description: $scope.description,
+      };
 
-      // $scope.submitDog = function() {
-      //   let dogObj = {}
-      //
-      //
-      //   DogService.setDog(dogObj);
-      //   $scope.dawgz = DogService.getDawgz();
-      //
-      // };
+      $scope.submit = function() {
+        console.log($scope.dogObj);
+        // let dogObj = {}
+        //
+        //
+        // DogService.setDog(dogObj);
+        // $scope.dawgz = DogService.getDawgz();
+        location.href = "#/feed"
+
+      };
 
   }])
 
@@ -35,7 +44,6 @@ module.exports = function(app) {
         PawthenticationService.ClearCredentials();
 
         $scope.logIn = function() {
-            console.log($scope.username)
             PawthenticationService.LogIn($scope.username, $scope.password, function(response) {
                 if (response.success) {
                     PawthenticationService.SetCredentials($scope.username, $scope.password);
@@ -47,30 +55,72 @@ module.exports = function(app) {
 
 },{}],3:[function(require,module,exports){
 /*******************************
+* Details Controller
+* (/posts in backend)
+********************************/
+
+module.exports = function(app) {
+
+  app.controller('DetailsController', ['$scope', '$location', 'DogService', function($scope, $location, DogService){
+
+    /*******************************
+    * comments and ups and posts
+    ********************************/
+    // $scope.ups = DogService.getUps();
+    // $scope.posts = DogService.getPosts();
+    $scope.comment = '';
+    $scope.dog = DogService.getDeets();
+
+
+
+    // add ups!
+    $scope.upDawg = function () {
+      console.log("dogD", $scope.dog);
+      DogService.setUps($scope.dog);
+    }
+
+
+    // back button
+    $scope.back = function () {
+        $location.path('/feed');
+      }
+
+  }])
+}
+
+},{}],4:[function(require,module,exports){
+/*******************************
 * Feed Controller
 *
 ********************************/
 
 module.exports = function(app) {
 
-  app.controller('FeedController', ['$scope', 'DogService', function($scope, DogService){
+  app.controller('FeedController', ['$scope', '$location', 'DogService', function($scope, $location, DogService){
 
     /*******************************
     * get dog data from service
     ********************************/
     $scope.dawgz = DogService.getDawgz();
+    $scope.dog = {};
 
 
-    $scope.deets = function () {
-      //1. grab dog details
-      //2. redirect to detail view
+    $scope.deets = function (dogObj) {
+      console.log('hello trying to get deets');
 
-    }
+      DogService.dogDeets(dogObj);
+      $location.path('/details');
+    };
+
+    ($scope.showDogs = function() {
+      console.log('show dogs');
+      $scope.dawgz = DogService.getDawgz();
+    })();
 
   }])
 }
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 /*******************************
 * Nav Controller
 *
@@ -91,7 +141,7 @@ module.exports = function(app) {
   }])
 }
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 /*******************************
@@ -112,8 +162,8 @@ module.exports = function(app) {
       templateUrl: 'feed.html',
       controller: 'FeedController'
     }).when('/details', {
-      templateUrl: '',
-      controller: ''
+      templateUrl: 'details.html',
+      controller: 'DetailsController'
     }).when('/add-dog-form', {
       templateUrl: 'add-dog-form.html',
       controller: 'AddDogFormController'
@@ -133,6 +183,7 @@ module.exports = function(app) {
 
   // Controllers
   require('./controllers/add-dog-form-controller')(app);
+  require('./controllers/details-controller')(app);
   require('./controllers/feed-controller')(app);
   require('./controllers/nav-controller')(app);
   require('./controllers/dawgIn-controller')(app);
@@ -141,7 +192,7 @@ module.exports = function(app) {
 
   // Directives
 })();
-},{"./controllers/add-dog-form-controller":1,"./controllers/dawgIn-controller":2,"./controllers/feed-controller":3,"./controllers/nav-controller":4,"./services/dog-service":6,"./services/pawthentication-service":7}],6:[function(require,module,exports){
+},{"./controllers/add-dog-form-controller":1,"./controllers/dawgIn-controller":2,"./controllers/details-controller":3,"./controllers/feed-controller":4,"./controllers/nav-controller":5,"./services/dog-service":7,"./services/pawthentication-service":8}],7:[function(require,module,exports){
 /*******************************
 * Dog Service
 *
@@ -152,6 +203,7 @@ module.exports = function(app) {
   app.factory('DogService', ['$http', function($http) {
 
       let dawgz = [];
+      let dogD = {};
 
       let dog = {
         name: '',
@@ -169,14 +221,24 @@ module.exports = function(app) {
       ********************************/
       return {
         getDawgz() {
+          $http({
+            url: './mock/dogs.json',
+            method: 'GET'
+          }).then(function(response){
+            dawgz = response.data;
+            console.log("before promise",dawgz);
+            return dawgz;
+          })
           return dawgz;
         },
 
-        getDog(name) {
-          //filter: find dog by name
-
+        dogDeets(dogObj) {
+          dogD = dogObj;
+          console.log(dogD);
+          return dogD
         },
 
+        //adds new dog to database
         setDog(data) {
           $http({
             url: '/dogs',
@@ -186,20 +248,31 @@ module.exports = function(app) {
 
         },
 
+        // increment UPs (addition happens in the back end)
+        setUps(dogObj){
+          $http({
+            url: '/ups',
+            method: 'POST',
+            data: dogObj,
+          })
+        },
+        getDeets(){
+          return dogD;
+        },
+
       } //********************************//
 
-  }])//end DogService**********************//
+  }])
 
 }
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict'
 module.exports = function(app) {
     app.factory('PawthenticationService', ['$http', '$rootScope', '$cookies', '$location', function($http, $rootScope, $cookies, $location) {
         let service = {};
         //Service functions*******************************
         service.LogIn = function(name, password, callback) {
-            console.log(name,password);
             $http.post('/users', {
                     name: name,
                     password: password
@@ -229,4 +302,4 @@ module.exports = function(app) {
     }]);
 }
 
-},{}]},{},[5])
+},{}]},{},[6])

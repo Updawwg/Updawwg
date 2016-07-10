@@ -118,7 +118,7 @@ public class UpdawwgRestController {
 
         dogs.save(dog);
         //redirect here how zach did in tomalikes
-        response.sendRedirect("/#/dogs");
+        response.sendRedirect("/#/feed");
     }
 
     // routes for posts

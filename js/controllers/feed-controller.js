@@ -5,19 +5,26 @@
 
 module.exports = function(app) {
 
-  app.controller('FeedController', ['$scope', 'DogService', function($scope, DogService){
+  app.controller('FeedController', ['$scope', '$location', 'DogService', function($scope, $location, DogService){
 
     /*******************************
     * get dog data from service
     ********************************/
     $scope.dawgz = DogService.getDawgz();
+    $scope.dog = {};
 
 
-    $scope.deets = function () {
-      //1. grab dog details
-      //2. redirect to detail view
+    $scope.deets = function (dogObj) {
+      console.log('hello trying to get deets');
 
-    }
+      DogService.dogDeets(dogObj);
+      $location.path('/details');
+    };
+
+    ($scope.showDogs = function() {
+      console.log('show dogs');
+      $scope.dawgz = DogService.getDawgz();
+    })();
 
   }])
 }
