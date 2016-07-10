@@ -31,10 +31,10 @@ app.config(['$routeProvider', function($routeProvider) {
       controller: 'AddDogFormController'
     })
 
-    .when('/logout', {
-      templateUrl: 'dogIn.html',
-      controller: 'DawgInController',
-    })
+//    .when('/logout', {
+//      templateUrl: 'dogIn.html',
+//      controller: 'DawgInController',
+//    })
 
     .when('/about', {
       templateUrl: 'about.html',
