@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -77,7 +78,7 @@ public class UpdawwgRestController {
 
     // make login happen in here
     @RequestMapping(path = "/users", method = RequestMethod.POST)
-    public void user(User user, HttpSession session) throws Exception {
+    public void user(@RequestBody User user, HttpSession session) throws Exception {
         User userFromDB = users.findFirstByName(user.getName());
         if (userFromDB == null) {
             user.setPassword(PasswordStorage.createHash(user.getPassword()));
@@ -95,9 +96,10 @@ public class UpdawwgRestController {
     public Iterable<Dog> getDogs() {
         return dogs.findAll();
     }
-
+    //might want to redirect
+    //do not have to change from void
     @RequestMapping(path = "/dogs", method = RequestMethod.POST)
-    public void dog(HttpSession session,String name, String breed, int age, String description, MultipartFile photo) throws Exception {
+    public void dog(HttpSession session, String name, String breed, int age, String description, MultipartFile photo, HttpServletResponse response) throws Exception {
         String username = (String) session.getAttribute("username");
         if (username == null) {
             throw new Exception("Not logged in!");
@@ -115,6 +117,8 @@ public class UpdawwgRestController {
 
 
         dogs.save(dog);
+        //redirect here how zach did in tomalikes
+        response.sendRedirect("/#/dogs");
     }
 
     // routes for posts
@@ -137,8 +141,9 @@ public class UpdawwgRestController {
         posts.save(post);
     }
 
+
     @RequestMapping(path="/ups", method = RequestMethod.POST)
-    public void ups(HttpSession session, Dog dog) throws Exception {
+    public void ups(HttpSession session, @RequestBody Dog dog) throws Exception {
         String username = (String) session.getAttribute("username");
         if (username == null) {
             throw new Exception("Not logged in!");
