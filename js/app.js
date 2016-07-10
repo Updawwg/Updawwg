@@ -22,8 +22,8 @@ app.config(['$routeProvider', function($routeProvider) {
     })
 
     .when('/details', {
-      templateUrl: '',
-      controller: '',
+      templateUrl: 'details.html',
+      controller: 'DetailsController',
     })
 
     .when('/add-dog-form', {
@@ -52,6 +52,7 @@ require('./services/pawthentication-service')(app);
 
 // Controllers
 require('./controllers/add-dog-form-controller')(app);
+require('./controllers/details-controller')(app);
 require('./controllers/feed-controller')(app);
 require('./controllers/nav-controller')(app);
 require('./controllers/dawgIn-controller')(app);
