@@ -31,7 +31,6 @@ module.exports = function(app) {
             method: 'GET'
           }).then(function(response){
             dawgz = response.data;
-            console.log("before promise",dawgz);
             return dawgz;
           })
           return dawgz;
@@ -39,7 +38,6 @@ module.exports = function(app) {
 
         dogDeets(dogObj) {
           dogD = dogObj;
-          console.log(dogD);
           return dogD
         },
 

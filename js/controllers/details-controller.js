@@ -5,7 +5,7 @@
 
 module.exports = function(app) {
 
-  app.controller('DetailsController', ['$scope', '$location', 'DogService', function($scope, $location, DogService){
+  app.controller('DetailsController', ['$scope', '$http', '$location', 'DogService', function($scope, $http, $location, DogService){
 
     /*******************************
     * comments and ups and posts
@@ -14,6 +14,7 @@ module.exports = function(app) {
     // $scope.posts = DogService.getPosts();
     $scope.comment = '';
     $scope.dog = DogService.getDeets();
+    $scope.dawgz = DogService.getDawgz();
 
     $scope.url = function (path) {
       return './assets/photos/' + path;
@@ -27,10 +28,13 @@ module.exports = function(app) {
 
 
     // add ups!
-    $scope.upDawg = function () {
-      DogService.setUps($scope.dog);
+    $scope.upDawg = function (dog) {
+      console.log('data', dog);
+
+      DogService.setUps(dog);
 
     }
+
 
 
     // back button
