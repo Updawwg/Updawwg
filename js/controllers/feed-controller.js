@@ -7,6 +7,11 @@ module.exports = function(app) {
 
   app.controller('FeedController', ['$scope', '$location', 'DogService', function($scope, $location, DogService){
 
+    ($scope.showDogs = function() {
+      console.log('show dogs');
+      $scope.dawgz = DogService.getDawgz();
+    })();
+    
     /*******************************
     * get dog data from service
     ********************************/
@@ -25,10 +30,6 @@ module.exports = function(app) {
       $location.path('/details');
     };
 
-    ($scope.showDogs = function() {
-      console.log('show dogs');
-      $scope.dawgz = DogService.getDawgz();
-    })();
 
   }])
 }

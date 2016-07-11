@@ -66,6 +66,7 @@ module.exports = function(app) {
     // $scope.posts = DogService.getPosts();
     $scope.comment = '';
     $scope.dog = DogService.getDeets();
+    $scope.ups = DogService.getDeets().rating;
     $scope.dawgz = DogService.getDawgz();
 
     $scope.url = function (path) {
@@ -81,9 +82,15 @@ module.exports = function(app) {
 
     // add ups!
     $scope.upDawg = function (dog) {
-      console.log('data', dog);
-
-      DogService.setUps(dog);
+      $http({
+        url: '/ups',
+        method: 'POST',
+        data: dog,
+      }).then(function(response){
+        $scope.ups = response.data.rating
+        $scope.dawgz = DogService.getDawgz();
+        return $scope.dawgz
+      })
 
     }
 
@@ -107,6 +114,11 @@ module.exports = function(app) {
 
   app.controller('FeedController', ['$scope', '$location', 'DogService', function($scope, $location, DogService){
 
+    ($scope.showDogs = function() {
+      console.log('show dogs');
+      $scope.dawgz = DogService.getDawgz();
+    })();
+    
     /*******************************
     * get dog data from service
     ********************************/
@@ -125,10 +137,6 @@ module.exports = function(app) {
       $location.path('/details');
     };
 
-    ($scope.showDogs = function() {
-      console.log('show dogs');
-      $scope.dawgz = DogService.getDawgz();
-    })();
 
   }])
 }
@@ -183,14 +191,7 @@ module.exports = function(app) {
     }).when('/add-dog-form', {
       templateUrl: 'add-dog-form.html',
       controller: 'AddDogFormController'
-    })
-
-    //    .when('/logout', {
-    //      templateUrl: 'dogIn.html',
-    //      controller: 'DawgInController',
-    //    })
-
-    .when('/about', {
+    }).when('/about', {
       templateUrl: 'about.html'
     }).otherwise({
       redirectTo: '/404'
@@ -252,7 +253,24 @@ module.exports = function(app) {
         },
 
         dogDeets(dogObj) {
-          dogD = dogObj;
+          // console.log(dogObj);
+          dogId = dogObj.id;
+          $http({
+            url: './dogs',
+            method: 'GET'
+          }).then(function(response){
+            console.log("hello", response);
+            dawgz = response.data;
+
+            dawgz.forEach(function(e,i){
+              console.log(e);
+              if (e.id === dogId) {
+                dogD = e;
+              }
+            })
+            return dogD;
+
+          })
           return dogD
         },
 
@@ -273,8 +291,8 @@ module.exports = function(app) {
             method: 'POST',
             data: dogObj,
           })
-
         },
+
         getDeets(){
           return dogD;
         },

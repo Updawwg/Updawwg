@@ -37,7 +37,24 @@ module.exports = function(app) {
         },
 
         dogDeets(dogObj) {
-          dogD = dogObj;
+          // console.log(dogObj);
+          dogId = dogObj.id;
+          $http({
+            url: './dogs',
+            method: 'GET'
+          }).then(function(response){
+            console.log("hello", response);
+            dawgz = response.data;
+
+            dawgz.forEach(function(e,i){
+              console.log(e);
+              if (e.id === dogId) {
+                dogD = e;
+              }
+            })
+            return dogD;
+
+          })
           return dogD
         },
 
@@ -58,8 +75,8 @@ module.exports = function(app) {
             method: 'POST',
             data: dogObj,
           })
-
         },
+
         getDeets(){
           return dogD;
         },
