@@ -118,7 +118,7 @@ module.exports = function(app) {
       console.log('show dogs');
       $scope.dawgz = DogService.getDawgz();
     })();
-    
+
     /*******************************
     * get dog data from service
     ********************************/
