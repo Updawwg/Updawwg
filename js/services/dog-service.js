@@ -5,7 +5,7 @@
 
 module.exports = function(app) {
 
-  app.factory('DogService', ['$http', function($http) {
+  app.factory('DogService', ['$http', '$location', function($http, $location) {
 
       let dawgz = [];
       let dogD = {};
@@ -37,13 +37,13 @@ module.exports = function(app) {
         },
 
         dogDeets(dogObj) {
-          // console.log(dogObj);
+
           dogId = dogObj.id;
           $http({
-            url: './dogs',
-            method: 'GET'
+            url: '/dogs',
+            method: 'GET',
           }).then(function(response){
-            console.log("hello", response);
+
             dawgz = response.data;
 
             dawgz.forEach(function(e,i){
@@ -52,10 +52,13 @@ module.exports = function(app) {
                 dogD = e;
               }
             })
+
+            $location.path('/details');
             return dogD;
 
-          })
+          });
           return dogD
+
         },
 
         //adds new dog to database

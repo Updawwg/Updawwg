@@ -40,6 +40,11 @@ app.config(['$routeProvider', function($routeProvider) {
       templateUrl: 'about.html',
     })
 
+    .when('/heatmap', {
+      templateUrl: 'heatmap.html',
+    })
+
+
     .otherwise({
       redirectTo: '/404',
     })

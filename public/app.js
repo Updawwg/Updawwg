@@ -134,7 +134,7 @@ module.exports = function(app) {
       console.log('hello trying to get deets');
 
       DogService.dogDeets(dogObj);
-      $location.path('/details');
+      // $location.path('/details');
     };
 
 
@@ -193,6 +193,8 @@ module.exports = function(app) {
       controller: 'AddDogFormController'
     }).when('/about', {
       templateUrl: 'about.html'
+    }).when('/heatmap', {
+      templateUrl: 'heatmap.html'
     }).otherwise({
       redirectTo: '/404'
     });
@@ -221,7 +223,7 @@ module.exports = function(app) {
 
 module.exports = function(app) {
 
-  app.factory('DogService', ['$http', function($http) {
+  app.factory('DogService', ['$http', '$location', function($http, $location) {
 
       let dawgz = [];
       let dogD = {};
@@ -253,13 +255,13 @@ module.exports = function(app) {
         },
 
         dogDeets(dogObj) {
-          // console.log(dogObj);
+
           dogId = dogObj.id;
           $http({
-            url: './dogs',
-            method: 'GET'
+            url: '/dogs',
+            method: 'GET',
           }).then(function(response){
-            console.log("hello", response);
+
             dawgz = response.data;
 
             dawgz.forEach(function(e,i){
@@ -268,10 +270,13 @@ module.exports = function(app) {
                 dogD = e;
               }
             })
+
+            $location.path('/details');
             return dogD;
 
-          })
+          });
           return dogD
+
         },
 
         //adds new dog to database
