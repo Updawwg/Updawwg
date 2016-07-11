@@ -1,12 +1,13 @@
 <!-- ng-controller="FeedController" -->
 
-<section>
-      <button type="button" name="pop" ng-click="showDogs()">SHOW ME DOGS NOW!</button>
+<button type="button" name="pop" ng-click="showDogs()">SHOW ME DOGS NOW!</button>
+<section class="feed">
+
 
 
       <div class="dog-feed" ng-click="deets(dog)" ng-repeat="dog in dawgz">
 
-        <h1>{{dog.name}}</h1>
+        <h6>{{dog.name}}</h6>
         <video id="dog{{$index}}" autoplay="autoplay" muted="" loop="" ng-attr-poster="{{url(dog.image)}}" >
           <source type="video/webm" ng-src={{url(dog.image)}}>
         </video>

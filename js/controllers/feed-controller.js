@@ -11,7 +11,7 @@ module.exports = function(app) {
       console.log('show dogs');
       $scope.dawgz = DogService.getDawgz();
     })();
-    
+
     /*******************************
     * get dog data from service
     ********************************/
@@ -27,7 +27,7 @@ module.exports = function(app) {
       console.log('hello trying to get deets');
 
       DogService.dogDeets(dogObj);
-      $location.path('/details');
+      // $location.path('/details');
     };
 
 
