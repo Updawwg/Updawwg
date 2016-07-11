@@ -12,9 +12,9 @@ module.exports = function(app) {
     ********************************/
     $scope.dawgz = DogService.getDawgz();
     $scope.dog = {};
-    
+
     $scope.url = function (path) {
-      return './assets/' + path;
+      return './assets/photos/' + path;
     };
 
 
