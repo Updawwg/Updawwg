@@ -319,7 +319,8 @@ h1 span {
   display: inline-flex;
   flex-direction: row;
   justify-content: space-around;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  margin-bottom: 50px; }
 
 .dog-feed {
   display: flex;
@@ -380,3 +381,11 @@ h1 span {
     max-width: 400px;
     max-height: 400px;
     margin-top: 20px; }
+
+.about {
+  margin: 10 auto;
+  width: 90%; }
+  .about h1 {
+    font-size: 5em; }
+  .about p {
+    font-size: 2em; }
