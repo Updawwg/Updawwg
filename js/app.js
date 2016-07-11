@@ -5,7 +5,7 @@
 
 (function() {
 
-let app = angular.module('UpDawwgApp', ['ngRoute','ngAnimate','ngCookies']);
+let app = angular.module('UpDawwgApp', ['ngRoute','ngAnimate']);
 
 
 //router

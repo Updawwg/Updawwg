@@ -172,7 +172,7 @@ module.exports = function(app) {
 
 (function () {
 
-  var app = angular.module('UpDawwgApp', ['ngRoute', 'ngAnimate', 'ngCookies']);
+  var app = angular.module('UpDawwgApp', ['ngRoute', 'ngAnimate']);
 
   //router
   app.config(['$routeProvider', function ($routeProvider) {
