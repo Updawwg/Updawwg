@@ -254,6 +254,7 @@ module.exports = function(app) {
           return dawgz;
         },
 
+        //clicking on a feed item pulls up the details
         dogDeets(dogObj) {
 
           dogId = dogObj.id;

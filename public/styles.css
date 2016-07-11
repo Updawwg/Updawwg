@@ -278,6 +278,8 @@ h1 span {
   align-content: flex-start; }
   .add-dog span.input-group-addon {
     width: 20%; }
+  .add-dog h1 {
+    margin-left: 20px; }
   .add-dog div {
     min-width: 500px;
     height: auto;
