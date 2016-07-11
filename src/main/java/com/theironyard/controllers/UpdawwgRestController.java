@@ -166,6 +166,6 @@ public class UpdawwgRestController {
     @RequestMapping(path = "/logout", method = RequestMethod.GET)
     public void logout(HttpSession session, HttpServletResponse response) throws IOException {
         session.invalidate();
-        response.sendRedirect("/#/");
+        response.sendRedirect("/");
     }
 }

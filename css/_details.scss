@@ -10,10 +10,17 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  
+
   h1 {
     color: white;
     font-size: 3em;
+  }
+  button {
+    display: inline-block;
+  }
+  h6 {
+    color: white;
+    font-size: 2em;
   }
   video {
     height: inherit;

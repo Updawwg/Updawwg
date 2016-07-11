@@ -57,7 +57,7 @@ module.exports = function(app) {
 
 module.exports = function(app) {
 
-  app.controller('DetailsController', ['$scope', '$location', 'DogService', function($scope, $location, DogService){
+  app.controller('DetailsController', ['$scope', '$http', '$location', 'DogService', function($scope, $http, $location, DogService){
 
     /*******************************
     * comments and ups and posts
@@ -66,6 +66,8 @@ module.exports = function(app) {
     // $scope.posts = DogService.getPosts();
     $scope.comment = '';
     $scope.dog = DogService.getDeets();
+    $scope.ups = DogService.getDeets().rating;
+    $scope.dawgz = DogService.getDawgz();
 
     $scope.url = function (path) {
       return './assets/photos/' + path;
@@ -79,10 +81,19 @@ module.exports = function(app) {
 
 
     // add ups!
-    $scope.upDawg = function () {
-      DogService.setUps($scope.dog);
+    $scope.upDawg = function (dog) {
+      $http({
+        url: '/ups',
+        method: 'POST',
+        data: dog,
+      }).then(function(response){
+        $scope.ups = response.data.rating
+        $scope.dawgz = DogService.getDawgz();
+        return $scope.dawgz
+      })
 
     }
+
 
 
     // back button
@@ -103,6 +114,11 @@ module.exports = function(app) {
 
   app.controller('FeedController', ['$scope', '$location', 'DogService', function($scope, $location, DogService){
 
+    ($scope.showDogs = function() {
+      console.log('show dogs');
+      $scope.dawgz = DogService.getDawgz();
+    })();
+    
     /*******************************
     * get dog data from service
     ********************************/
@@ -121,10 +137,6 @@ module.exports = function(app) {
       $location.path('/details');
     };
 
-    ($scope.showDogs = function() {
-      console.log('show dogs');
-      $scope.dawgz = DogService.getDawgz();
-    })();
 
   }])
 }
@@ -179,14 +191,7 @@ module.exports = function(app) {
     }).when('/add-dog-form', {
       templateUrl: 'add-dog-form.html',
       controller: 'AddDogFormController'
-    })
-
-    //    .when('/logout', {
-    //      templateUrl: 'dogIn.html',
-    //      controller: 'DawgInController',
-    //    })
-
-    .when('/about', {
+    }).when('/about', {
       templateUrl: 'about.html'
     }).otherwise({
       redirectTo: '/404'
@@ -242,15 +247,30 @@ module.exports = function(app) {
             method: 'GET'
           }).then(function(response){
             dawgz = response.data;
-            console.log("before promise",dawgz);
             return dawgz;
           })
           return dawgz;
         },
 
         dogDeets(dogObj) {
-          dogD = dogObj;
-          console.log(dogD);
+          // console.log(dogObj);
+          dogId = dogObj.id;
+          $http({
+            url: './dogs',
+            method: 'GET'
+          }).then(function(response){
+            console.log("hello", response);
+            dawgz = response.data;
+
+            dawgz.forEach(function(e,i){
+              console.log(e);
+              if (e.id === dogId) {
+                dogD = e;
+              }
+            })
+            return dogD;
+
+          })
           return dogD
         },
 
@@ -271,8 +291,8 @@ module.exports = function(app) {
             method: 'POST',
             data: dogObj,
           })
-
         },
+
         getDeets(){
           return dogD;
         },

@@ -297,6 +297,11 @@ video {
   #gyf-deets h1 {
     color: white;
     font-size: 3em; }
+  #gyf-deets button {
+    display: inline-block; }
+  #gyf-deets h6 {
+    color: white;
+    font-size: 2em; }
   #gyf-deets video {
     height: inherit;
     width: inherit;
