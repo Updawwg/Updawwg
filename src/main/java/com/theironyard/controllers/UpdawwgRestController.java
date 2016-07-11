@@ -113,10 +113,7 @@ public class UpdawwgRestController {
         File dir = new File("public/assets/" + PHOTOS_DIR);
         dir.mkdirs();
 
-        if (!image.getContentType().contains("image")) {
-            response.sendRedirect("/#/add-dog-form");
-        }
-        else {
+        if (image.getContentType().contains("image") || (image.getContentType().contains("video"))) {
             File photoFile = File.createTempFile("photo", image.getOriginalFilename(), dir);
             FileOutputStream fos = new FileOutputStream(photoFile);
             fos.write(image.getBytes());
@@ -124,6 +121,9 @@ public class UpdawwgRestController {
             Dog dog = new Dog(name, photoFile.getName(), breed, age, description, 0, user);
             dogs.save(dog);
             response.sendRedirect("/#/feed");
+        }
+        else {
+            response.sendRedirect("/#/add-dog-form");
         }
     }
 
