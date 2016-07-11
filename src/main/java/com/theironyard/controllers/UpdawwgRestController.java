@@ -149,7 +149,7 @@ public class UpdawwgRestController {
 
 
     @RequestMapping(path="/ups", method = RequestMethod.POST)
-    public void ups(HttpSession session, @RequestBody Dog dog) throws Exception {
+    public Dog ups(HttpSession session, @RequestBody Dog dog) throws Exception {
         String username = (String) session.getAttribute("username");
         if (username == null) {
             throw new Exception("Not logged in!");
@@ -159,6 +159,8 @@ public class UpdawwgRestController {
         rating++;
         d.setRating(rating);
         dogs.save(d);
+
+        return d;
     }
 
     @RequestMapping(path = "/logout", method = RequestMethod.GET)
